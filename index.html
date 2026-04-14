@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#f8f9fa"/>
+  <title>Lukáš Pilko – Správa e-shopu | BSShop specialista</title>
+  <meta name="description" content="Správa, optimalizace a testování e-shopů na platformě BSShop. Denní administrace, SEO, e-mail marketing a Pohoda."/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:       #212121;
+      --ink2:      #2d2d2d;
+      --ink3:      #383838;
+      --orange:    #ea580c;
+      --orange-lt: #f97316;
+      --orange-gl: #fdba74;
+      --orange-dk: #c2410c;
+      --amber:     #d97706;
+      --amber-lt:  #f59e0b;
+      --amber-gl:  #fcd34d;
+      --bg:        #f8f9fa;
+      --bg2:       #f1f3f5;
+      --bg3:       #e2e6ea;
+      --line:      #ced4da;
+      --muted:     #64748b;
+      --white:     #ffffff;
+      --r:         10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: #f8f9fa; }
+    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    /* UTIL */
+    .tag {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--orange); background: #fff7ed; border: 1px solid #fed7aa;
+      padding: .28rem .75rem; border-radius: 999px;
+    }
+    h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.9rem, 3.8vw, 2.9rem); font-weight: 800; line-height: 1.1; color: var(--ink); }
+    h2 em { font-style: normal; color: var(--orange)  }
+    .lead { font-size: 1.05rem; color: var(--muted); line-height: 1.82; margin-top: .85rem; max-width: 58ch; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(33,33,33,.96); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      transition: padding .3s;
+    }
+    .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: -.01em; }
+    .nav-logo span { color: var(--orange-gl); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { text-decoration: none; color: rgba(255,255,255,.5); font-size: .83rem; font-weight: 400; transition: color .2s; }
+    nav a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--amber); color: #fff;
+      padding: .5rem 1.3rem; border-radius: 6px;
+      font-size: .83rem; font-weight: 600;
+      text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--amber-lt); color: #fff; }
+
+    /* HERO */
+    #hero {
+      background: var(--ink);
+      min-height: 94vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 70px; overflow: hidden;
+      position: relative;
+    }
+    /* subtle grid pattern */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(234,88,12,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,88,12,.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 4rem 4rem 4rem; position: relative; z-index: 2;
+    }
+    .hero-eyebrow { margin-bottom: 1.5rem; opacity:0; animation: fadeUp .5s .1s ease forwards; }
+    .hero-eyebrow .tag { background: rgba(234,88,12,.15); border-color: rgba(234,88,12,.3); color: var(--orange-gl); }
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800; line-height: 1.05; color: #fff;
+      opacity:0; animation: fadeUp .5s .2s ease forwards;
+    }
+    h1 em { font-style: normal; color: var(--orange-gl); }
+    .hero-sub {
+      margin-top: 1.4rem; font-size: 1.1rem; color: rgba(255,255,255,.55);
+      line-height: 1.8; max-width: 42ch;
+      opacity:0; animation: fadeUp .5s .32s ease forwards;
+    }
+    .hero-cta {
+      margin-top: 2.4rem; display: flex; gap: .85rem; flex-wrap: wrap;
+      opacity:0; animation: fadeUp .5s .44s ease forwards;
+    }
+    .btn-primary {
+      background: var(--amber); color: #fff;
+      padding: .85rem 2rem; border-radius: 7px;
+      font-size: .9rem; font-weight: 600;
+      text-decoration: none; transition: background .2s, transform .15s; display: inline-block;
+      box-shadow: 0 4px 20px rgba(217,119,6,.4);
+    }
+    .btn-primary:hover { background: var(--amber-lt); transform: translateY(-2px); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.75);
+      padding: .85rem 2rem; border-radius: 7px;
+      font-size: .9rem; font-weight: 400;
+      text-decoration: none; transition: border-color .2s, color .2s, background .2s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--amber-lt); color: var(--amber-gl); }
+
+    /* hero badges */
+    .hero-badges {
+      display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;
+      opacity:0; animation: fadeUp .5s .56s ease forwards;
+    }
+    .hbadge {
+      display: flex; align-items: center; gap: .55rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22);
+      padding: .5rem .9rem; border-radius: 7px;
+      font-size: .8rem; color: rgba(255,255,255,.6); font-weight: 400;
+    }
+    .hbadge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber-lt); flex-shrink: 0; }
+
+    /* hero right */
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; opacity: .35; display: block; }
+    .hero-right::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 120px;
+      background: linear-gradient(to right, var(--ink), transparent); z-index: 2;
+    }
+    .hero-right::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(234,88,12,.2) 0%, transparent 60%);
+      z-index: 1;
+    }
+    /* floating stat cards */
+    .hero-stat {
+      position: absolute; z-index: 3;
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
+      backdrop-filter: blur(12px);
+      border-radius: var(--r); padding: 1rem 1.4rem;
+    }
+    .hero-stat-1 { bottom: 5rem; right: 3rem; opacity:0; animation: fadeUp .5s .7s ease forwards; }
+    .hero-stat-2 { top: 7rem; right: 4rem; opacity:0; animation: fadeUp .5s .85s ease forwards; }
+    .hs-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.8rem; font-weight: 800; color: #fff; line-height: 1; }
+    .hs-lab { font-size: .7rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .1em; margin-top: .3rem; }
+
+    /* USP BAR */
+    .usp-bar {
+      background: var(--ink2);
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      padding: .9rem 4rem;
+      display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .usp-item { display: flex; align-items: center; gap: .55rem; font-size: .78rem; color: rgba(255,255,255,.5); font-weight: 400; letter-spacing: .04em; }
+    .usp-item svg { color: var(--amber-lt); flex-shrink: 0; }
+
+    /* SHARED */
+    section { padding: 5.5rem 4rem; }
+    .sec-head { margin-bottom: 3rem; }
+    .sec-head .tag { margin-bottom: .75rem; }
+
+    /* O MNĚ */
+    #o-mne { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
+    .about-photo {
+      position: relative; height: 460px; border-radius: 16px;
+      background: var(--bg2); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo-placeholder { text-align: center; color: var(--muted); }
+    .about-photo-placeholder .ph-icon { font-size: 3.5rem; opacity: .3; display: block; margin-bottom: .6rem; }
+    .about-photo-placeholder p { font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; opacity: .4; }
+    .about-photo-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--amber); color: #fff;
+      padding: .5rem 1rem; border-radius: 6px;
+      font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .about-text .tag { margin-bottom: .75rem; }
+    .about-text h2 { margin-bottom: 1.1rem; }
+    .about-text p { font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+    .about-text p strong { color: var(--ink); font-weight: 500; }
+    .about-grid-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .ast {
+      background: var(--bg2); border-radius: var(--r); padding: 1.1rem 1.2rem;
+      border-top: 3px solid var(--orange) 
+    }
+    .ast:nth-child(2) { border-top-color: var(--amber); }
+    .ast:nth-child(3) { border-top-color: var(--orange-lt); }
+    .ast-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--orange)  line-height: 1; }
+    .ast:nth-child(2) .ast-val { color: var(--amber); }
+    .ast-lab { font-size: .72rem; color: var(--muted); font-weight: 500; margin-top: .3rem; text-transform: uppercase; letter-spacing: .07em; }
+
+    /* SPECIALIZAÇÃO – BSShop highlight */
+    #bsshop {
+      background: var(--ink);
+      position: relative; overflow: hidden;
+    }
+    #bsshop::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(234,88,12,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,88,12,.05) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+    .bsshop-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 2; }
+    .bsshop-text .tag { background: rgba(234,88,12,.15); border-color: rgba(234,88,12,.3); color: var(--orange-gl); margin-bottom: .75rem; }
+    .bsshop-text h2 { color: #fff; margin-bottom: 1.1rem; }
+    .bsshop-text h2 em { color: var(--orange-gl); }
+    .bsshop-text p { font-size: 1rem; color: rgba(255,255,255,.55); line-height: 1.85; margin-bottom: 1rem; }
+    .bsshop-text p strong { color: rgba(255,255,255,.85); font-weight: 500; }
+    .bsshop-features { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
+    .bsf {
+      display: flex; gap: .9rem; align-items: flex-start;
+      padding: 1rem 1.2rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+      border-left: 3px solid var(--orange-lt);
+      border-radius: var(--r); transition: background .2s, border-color .2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+    }
+    .bsf:hover { background: rgba(217,119,6,.12); border-color: rgba(217,119,6,.4); border-left-color: var(--amber); }
+    .bsf-icon { color: var(--orange-gl); flex-shrink: 0; margin-top: .15rem; }
+    .bsf h4 { font-size: .9rem; font-weight: 600; color: #fff; margin-bottom: .25rem; }
+    .bsf p { font-size: .83rem; color: rgba(255,255,255,.55); line-height: 1.6; }
+    .bsshop-visual {
+      background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 16px; padding: 2rem;
+      display: flex; flex-direction: column; gap: .75rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 4px 24px rgba(0,0,0,.2);
+    }
+    .bsv-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .3rem; }
+    .bsv-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .7rem 1rem;
+      background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px; font-size: .88rem;
+      transition: background .15s;
+    }
+    .bsv-row:hover { background: rgba(255,255,255,.14); }
+    .bsv-row-left { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.82); font-weight: 400; }
+    .bsv-check {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(234,88,12,.3); border: 1.5px solid rgba(253,186,116,.5);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange-gl);
+    }
+
+    /* SLUŽBY */
+    #sluzby { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .svc-card {
+      background: var(--white); border-radius: var(--r);
+      border: 1px solid var(--line); padding: 2rem 1.8rem;
+      position: relative; overflow: hidden;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .svc-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(234,88,12,.1); }
+    .svc-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, var(--amber), var(--amber-lt));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+    }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-icon { color: var(--orange)  margin-bottom: 1.1rem; }
+    .svc-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: .55rem; }
+    .svc-card p { font-size: .87rem; color: var(--muted); line-height: 1.78; }
+    .svc-card ul { margin-top: .6rem; list-style: none; }
+    .svc-card ul li { font-size: .83rem; color: var(--muted); line-height: 2; display: flex; align-items: baseline; gap: .5rem; }
+    .svc-card ul li::before { content: '→'; color: var(--amber); font-size: .75rem; flex-shrink: 0; }
+    .svc-n { position: absolute; top: 1.2rem; right: 1.4rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3rem; font-weight: 800; color: rgba(234,88,12,.06); line-height: 1; }
+
+    /* REFERENCE */
+    #reference { background: var(--white); border-top: 1px solid var(--line); }
+    .ref-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .ref-card {
+      background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 1.8rem; transition: border-color .2s, box-shadow .2s;
+    }
+    .ref-card:hover { border-color: var(--amber); box-shadow: 0 8px 24px rgba(217,119,6,.08); }
+    .ref-domain { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+    .ref-domain a { color: inherit; text-decoration: none; transition: color .2s; }
+    .ref-domain a:hover { color: var(--amber); }
+    .ref-segment { font-size: .72rem; font-weight: 500; color: var(--orange); background: #fff7ed; border: 1px solid #fed7aa; padding: .2rem .65rem; border-radius: 999px; display: inline-block; margin-bottom: .9rem; }
+    .ref-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
+    .ref-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .ref-tag { font-size: .72rem; font-weight: 500; color: var(--muted); background: var(--bg3); padding: .2rem .6rem; border-radius: 4px; }
+    .ref-duration { font-size: .75rem; color: var(--muted); margin-top: .9rem; display: flex; align-items: center; gap: .4rem; }
+    .ref-duration svg { color: var(--orange)  flex-shrink: 0; }
+
+    /* PROCESS */
+    #postup { background: var(--bg2); border-top: 1px solid var(--line); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: 3rem; }
+    .steps::before {
+      content: ''; position: absolute; top: 1.8rem; left: 12.5%; right: 12.5%;
+      height: 2px; background: linear-gradient(to right, var(--amber), var(--amber-lt));
+      opacity: .3;
+    }
+    .step { padding: 1.5rem; text-align: center; }
+    .step-circle {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--orange)  color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: .85rem; font-weight: 800;
+      margin: 0 auto 1.4rem; position: relative; z-index: 2;
+      box-shadow: 0 0 0 5px var(--bg2), 0 0 0 6px rgba(234,88,12,.2);
+    }
+    .step:nth-child(even) .step-circle {
+      background: var(--amber);
+      box-shadow: 0 0 0 5px var(--bg2), 0 0 0 6px rgba(217,119,6,.2);
+    }
+    .step h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+    .step p { font-size: .83rem; color: var(--muted); line-height: 1.7; }
+
+    /* WEBY SEKCE */
+    #weby { background: var(--white); border-top: 1px solid var(--line); }
+    .weby-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .weby-text .tag { margin-bottom: .75rem; }
+    .weby-text h2 { margin-bottom: 1.1rem; }
+    .weby-text p { font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+    .weby-text p strong { color: var(--ink); font-weight: 500; }
+    .weby-cta { margin-top: 1.8rem; }
+    .weby-visual {
+      background: var(--bg2); border: 1px solid var(--line);
+      border-radius: 16px; overflow: hidden; height: 380px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .weby-screenshot { width: 90%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.12); background: var(--white); border: 1px solid var(--line); padding: 1.2rem; }
+    .ws-bar { display: flex; gap: .4rem; margin-bottom: .8rem; }
+    .ws-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .ws-hero { height: 60px; background: linear-gradient(135deg, #f97316, #fb923c); border-radius: 6px; margin-bottom: .7rem; display: flex; align-items: center; padding: 0 1rem; }
+    .ws-hero span { font-size: .7rem; font-weight: 700; color: #fff; opacity: .8; }
+    .ws-row { height: 12px; background: var(--bg3); border-radius: 4px; margin-bottom: .5rem; }
+    .ws-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .4rem; margin-top: .5rem; }
+    .ws-card { height: 32px; background: var(--bg2); border-radius: 4px; border: 1px solid var(--line); }
+
+    /* KONTAKT */
+    #kontakt { background: var(--ink); border-top: 1px solid rgba(255,255,255,.09); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; position: relative; overflow: hidden; }
+    #kontakt::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(234,88,12,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,88,12,.05) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+    .contact-left { position: relative; z-index: 2; }
+    .contact-left .tag { background: rgba(217,119,6,.15); border-color: rgba(217,119,6,.3); color: var(--amber-gl); margin-bottom: .75rem; }
+    .contact-left h2 { color: #fff; margin-bottom: 1rem; }
+    .contact-left h2 em { color: var(--amber-gl); }
+    .contact-left .lead { color: rgba(255,255,255,.45); }
+    .contact-details { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .cd {
+      display: flex; gap: .9rem; align-items: center;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      padding: .9rem 1.1rem; border-radius: var(--r);
+      transition: background .2s, border-color .2s;
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    }
+    .cd:hover { background: rgba(217,119,6,.1); border-color: rgba(217,119,6,.3); }
+    .cd-icon { color: var(--amber-lt); flex-shrink: 0; }
+    .cd-label { font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+    .cd-val { font-size: .98rem; font-weight: 500; color: rgba(255,255,255,.85); margin-top: .1rem; }
+    .cd-val a { color: inherit; text-decoration: none; }
+    .cd-val a:hover { color: var(--amber-gl); }
+
+    .contact-form { position: relative; z-index: 2; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-top: 3px solid var(--amber); border-radius: 16px; padding: 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,.2); }
+    .contact-form h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; }
+    .field { margin-bottom: .9rem; }
+    .field label { display: block; font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: .4rem; }
+    .field input, .field select, .field textarea {
+      width: 100%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+      border-radius: 7px; padding: .72rem .9rem;
+      color: #fff; font-family: 'DM Sans', sans-serif; font-size: .9rem; font-weight: 400;
+      outline: none; transition: border-color .2s;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.25); }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--amber); }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .field select option { background: var(--ink2); color: #fff; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .btn-submit { width: 100%; background: var(--amber); border: none; cursor: pointer; padding: .95rem; font-family: 'DM Sans', sans-serif; font-size: .9rem; font-weight: 600; color: #fff; border-radius: 7px; transition: background .2s; margin-top: .4rem; box-shadow: 0 4px 18px rgba(217,119,6,.4); }
+    .btn-submit:hover { background: var(--amber-lt); }
+
+    /* FOOTER */
+    footer { background: #181818; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,.09); }
+    .footer-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: rgba(255,255,255,.7); }
+    .footer-logo span { color: var(--amber-gl); }
+    footer p { font-size: .75rem; color: rgba(255,255,255,.25); }
+    .footer-links { display: flex; gap: 1.4rem; }
+    .footer-links a { font-size: .75rem; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--amber-gl); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .ref-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 2rem; } nav ul { display: none; }
+      section { padding: 4rem 2rem; }
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 3rem 2rem 2rem; }
+      .hero-right { height: 300px; }
+      .hero-right::before { display: none; }
+      .about-grid, .bsshop-grid, .weby-grid, #kontakt { grid-template-columns: 1fr; gap: 2.5rem; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; } .steps::before { display: none; }
+      .usp-bar { padding: .9rem 2rem; gap: 1.5rem; }
+      footer { padding: 1.5rem 2rem; flex-direction: column; text-align: center; }
+      .contact-form { padding: 1.8rem; }
+      .about-grid-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .services-grid, .ref-grid, .steps { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-badges { gap: .5rem; }
+      .about-grid-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Lukáš <span>Pilko</span></div>
+  <ul>
+    <li><a href="#o-mne">O mně</a></li>
+    <li><a href="#bsshop">BSShop</a></li>
+    <li><a href="#sluzby">Služby</a></li>
+    <li><a href="#reference">Reference</a></li>
+    <li><a href="#weby">Weby</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Napsat zprávu</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="tag">✦ BSShop · Pohoda · E-mail marketing</span>
+    </div>
+    <h1>Správa e-shopu,<br>na které se <em>můžete<br>spolehnout</em></h1>
+    <p class="hero-sub">Komplexní administrace e-shopů na platformě BSShop. Denní správa, testování, SEO a e-mail marketing – bez chybovosti, bez výpadků.</p>
+    <div class="hero-cta">
+      <a href="#kontakt" class="btn-primary">Nezávazně napsat</a>
+      <a href="#sluzby" class="btn-ghost">Přehled služeb →</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hbadge"><div class="hbadge-dot"></div> BSShop specialista</div>
+      <div class="hbadge"><div class="hbadge-dot"></div> Pohoda – napříč agendami</div>
+      <div class="hbadge"><div class="hbadge-dot"></div> Ecomail &amp; Mailkit</div>
+      <div class="hbadge"><div class="hbadge-dot"></div> Nymburk / remote</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80&auto=format&fit=crop" alt="E-shop správa">
+    <div class="hero-stat hero-stat-1">
+      <div class="hs-val">3+</div>
+      <div class="hs-lab">Long-term klienti</div>
+    </div>
+    <div class="hero-stat hero-stat-2">
+      <div class="hs-val">BSShop</div>
+      <div class="hs-lab">Hlavní platforma</div>
+    </div>
+  </div>
+</section>
+
+<!-- USP BAR -->
+<div class="usp-bar">
+  <div class="usp-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+    Každá změna testována před nasazením
+  </div>
+  <div class="usp-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Rychlá odezva, spolehlivý provoz
+  </div>
+  <div class="usp-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+    Pracuji sám – přímá komunikace
+  </div>
+  <div class="usp-item">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    Desktop i mobilní testování
+  </div>
+</div>
+
+<!-- O MNĚ -->
+<section id="o-mne">
+  <div class="about-grid">
+    <div class="about-photo reveal">
+      <!-- <img src="foto.jpg" alt="Lukáš Pilko"> -->
+      <div class="about-photo-placeholder">
+        <span class="ph-icon">👤</span>
+        <p>Vaše foto zde</p>
+      </div>
+      <div class="about-photo-badge">Dostupný pro nové klienty</div>
+    </div>
+    <div class="about-text reveal">
+      <span class="tag">O mně</span>
+      <h2>Jsem Lukáš.<br><em>E-shopy jsou má denní práce.</em></h2>
+      <p>Správou e-shopů se zabývám dlouhodobě, se specializací na platformu <strong>BSShop</strong>. Znám ji zevnitř – od administrace produktů přes nastavení doprav a plateb až po ladění SEO a e-mail kampaní.</p>
+      <p>Neprodávám obecné konzultace. Přebírám e-shop a starám se o jeho denní chod – <strong>samostatně, spolehlivě a bez nutnosti vašeho neustálého dohledu.</strong> Každá změna je před nasazením otestována, každý problém řeším dřív, než si ho zákazník všimne.</p>
+      <p>Sídlím v Nymburce, pracuji vzdáleně. Komunikace probíhá průběžně, bez zbytečných schůzek a čekání.</p>
+      <div class="about-grid-stats">
+        <div class="ast"><div class="ast-val">BSShop</div><div class="ast-lab">Hlavní platforma</div></div>
+        <div class="ast"><div class="ast-val">Pohoda</div><div class="ast-lab">Účetní systém</div></div>
+        <div class="ast"><div class="ast-val">Ecomail</div><div class="ast-lab">E-mail marketing</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BSSHOP SPECIALISTA -->
+<section id="bsshop">
+  <div class="bsshop-grid">
+    <div class="bsshop-text reveal">
+      <span class="tag">⚡ BSShop specialista</span>
+      <h2>Znám BSShop<br><em>zevnitř</em></h2>
+      <p>BSShop (BSAdmin) je e-commerce platforma s vlastní logikou, specifiky a omezeními. Orientuji se v ní na úrovni, která mi umožňuje řešit věci rychle a správně – bez zdlouhavého zkoušení.</p>
+      <p><strong>Proč to pro vás znamená úsporu:</strong> neplatíte za to, aby se někdo nejdříve systém naučil. Nastupuji a jdu rovnou do práce.</p>
+      <div class="bsshop-features">
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          <div><h4>Administrace a správa obsahu</h4><p>Produkty, kategorie, filtry, akce, dopravy, platby – vše v BSAdmin.</p></div>
+        </div>
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <div><h4>Testování změn</h4><p>Každá úprava ověřena na desktopu i mobilu – košík, platby, dopravy, návaznosti.</p></div>
+        </div>
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div><h4>SEO optimalizace v systému</h4><p>Titulky, meta popisy, prolinkování, obsahové stránky – přímo v BSShop.</p></div>
+        </div>
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div><h4>Import dat (XLS, XML)</h4><p>Hromadný import a aktualizace produktových dat a ceníků.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="bsshop-visual reveal">
+      <div class="bsv-title">Přehled dovedností</div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">BSShop / BSAdmin</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">Pohoda – práce napříč agendami</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">Ecomail</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">Mailkit</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">HTML &amp; CSS úpravy</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">Import XLS / XML</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">Responzivní testování</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="bsv-row">
+        <div class="bsv-row-left">SEO on-page</div>
+        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLUŽBY -->
+<section id="sluzby">
+  <div class="sec-head reveal">
+    <span class="tag">Přehled služeb</span>
+    <h2>Co pro vás <em>udělám</em></h2>
+    <p class="lead">Kompletní správa e-shopu nebo konkrétní oblast – domluvíme se podle vašich potřeb.</p>
+  </div>
+  <div class="services-grid reveal">
+
+    <div class="svc-card">
+      <div class="svc-n">01</div>
+      <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <h3>Správa e-shopu</h3>
+      <p>Každodenní administrace BSShop, úpravy nastavení a obsahu, správa blogu a obsahových stránek.</p>
+      <ul>
+        <li>Administrace BSShop (BSAdmin)</li>
+        <li>Úpravy obsahu a nastavení</li>
+        <li>Správa blogu a stránek</li>
+        <li>Příprava a správa akcí</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-n">02</div>
+      <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      <h3>Produkty a objednávky</h3>
+      <p>Kompletní správa produktového katalogu, kategorií, filtrů a nastavení doprav a plateb.</p>
+      <ul>
+        <li>Správa produktů, kategorií, filtrů</li>
+        <li>Nastavení doprav a plateb</li>
+        <li>Import XLS a XML dat</li>
+        <li>Správa obrázků a dokumentace</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-n">03</div>
+      <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <h3>Testování</h3>
+      <p>Každá změna je před nasazením ověřena. Košík, platby, dopravy, responsivita – na desktopu i mobilu.</p>
+      <ul>
+        <li>Testování změn před nasazením</li>
+        <li>Kontrola košíku, doprav a plateb</li>
+        <li>Responzivní testování</li>
+        <li>Ověření hromadných úprav</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-n">04</div>
+      <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <h3>SEO a obsah</h3>
+      <p>Optimalizace produktů, kategorií i stránek pro vyhledávače. Titulky, popisy, interní prolinkování.</p>
+      <ul>
+        <li>Optimalizace produktů a kategorií</li>
+        <li>Titulky, meta popisy, prolinkování</li>
+        <li>Obsahová podpora e-shopu a blog</li>
+        <li>Dlouhodobé zlepšování viditelnosti</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-n">05</div>
+      <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <h3>E-mail marketing</h3>
+      <p>Příprava a rozesílka newsletterů přes Ecomail nebo Mailkit. Segmentace, cílení a vyhodnocení výsledků.</p>
+      <ul>
+        <li>Příprava a rozesílka newsletterů</li>
+        <li>Segmentace a cílení kampaní</li>
+        <li>Pravidelné i jednorázové kampaně</li>
+        <li>Vyhodnocování a optimalizace</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <div class="svc-n">06</div>
+      <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <h3>Pohoda a systémy</h3>
+      <p>Práce s účetním systémem Pohoda napříč agendami. HTML a CSS úpravy šablon přímo v e-shopu.</p>
+      <ul>
+        <li>Pohoda – práce napříč agendami</li>
+        <li>HTML &amp; CSS úpravy šablon</li>
+        <li>Propojení e-shopu a Pohody</li>
+        <li>Správa dat a synchronizace</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- REFERENCE -->
+<section id="reference">
+  <div class="sec-head reveal">
+    <span class="tag">Reference</span>
+    <h2>Klienti, se kterými <em>pracuji</em></h2>
+    <p class="lead">Dlouhodobá spolupráce, ne jednorázové zakázky. Klienty si váží a starám se o jejich e-shopy jako o vlastní.</p>
+  </div>
+  <div class="ref-grid reveal">
+
+    <div class="ref-card">
+      <div class="ref-domain">
+        <a href="https://www.acara.cz" target="_blank">acara.cz</a>
+        &nbsp;/&nbsp;
+        <a href="https://www.acara.sk" target="_blank">acara.sk</a>
+      </div>
+      <span class="ref-segment">Stavební materiály</span>
+      <p class="ref-desc">Správa českého a slovenského e-shopu se stavebními a podlahovými lištami. Kompletní administrace BSShop, správa produktového katalogu a e-mail marketing.</p>
+      <div class="ref-tags">
+        <span class="ref-tag">BSShop</span>
+        <span class="ref-tag">E-mail marketing</span>
+        <span class="ref-tag">Produkty</span>
+        <span class="ref-tag">SEO</span>
+      </div>
+      <div class="ref-duration">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Dlouhodobá spolupráce
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-domain"><a href="https://www.exo-eko.cz" target="_blank">exo-eko.cz</a></div>
+      <span class="ref-segment">Chovatelské potřeby</span>
+      <p class="ref-desc">Správa e-shopu s chovatelskými potřebami. Administrace produktů, kategorií a obsahu. Správa akcí a pravidelná údržba e-shopu v BSShop.</p>
+      <div class="ref-tags">
+        <span class="ref-tag">BSShop</span>
+        <span class="ref-tag">Správa obsahu</span>
+        <span class="ref-tag">Akce a slevy</span>
+        <span class="ref-tag">Pohoda</span>
+      </div>
+      <div class="ref-duration">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Dlouhodobá spolupráce
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-domain"><a href="https://www.greenpets.cz" target="_blank">greenpets.cz</a></div>
+      <span class="ref-segment">Chovatelské potřeby</span>
+      <p class="ref-desc">Správa a optimalizace e-shopu zaměřeného na ekologické chovatelské produkty. Správa produktů, SEO a obsahová podpora.</p>
+      <div class="ref-tags">
+        <span class="ref-tag">BSShop</span>
+        <span class="ref-tag">SEO</span>
+        <span class="ref-tag">Obsah</span>
+        <span class="ref-tag">Testování</span>
+      </div>
+      <div class="ref-duration">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Dlouhodobá spolupráce
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JAK SPOLUPRÁCE FUNGUJE -->
+<section id="postup">
+  <div class="sec-head reveal" style="text-align:center">
+    <span class="tag" style="margin:0 auto .75rem">Jak to funguje</span>
+    <h2 style="text-align:center">Jak <em>spolupráce</em> funguje</h2>
+    <p class="lead" style="margin:.85rem auto 0; text-align:center; max-width:50ch">Žádná složitá onboarding řízení. Domluvíme se, zorientuji se v systému a jdu pracovat.</p>
+  </div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-circle">1</div>
+      <h3>Úvodní hovor</h3>
+      <p>Probereme váš e-shop, aktuální stav a co potřebujete řešit. 30 minut, bez závazku.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">2</div>
+      <h3>Přístupy a přehled</h3>
+      <p>Získám přístupy do BSAdmin a projdu si e-shop. Zorientuji se rychle – systém znám dobře.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <h3>Nastupuji do práce</h3>
+      <p>Zahajuji správu podle domluvených priorit. Průběžná komunikace, pravidelné hlášení.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">4</div>
+      <h3>Dlouhodobá péče</h3>
+      <p>Starám se o chod e-shopu průběžně. Problémy řeším proaktivně, vy se soustředíte na byznys.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEBY PRO ŘEMESLNÍKY -->
+<section id="weby">
+  <div class="weby-grid">
+    <div class="weby-text reveal">
+      <span class="tag">✦ Nová služba</span>
+      <h2>Tvorba webů<br>pro <em>řemeslníky</em></h2>
+      <p>Kromě správy e-shopů nově nabízím tvorbu moderních landing pages pro živnostníky a malé firmy – řemeslníky, stavební firmy, instalatéry a další, kteří nemají čas ani chuť řešit IT.</p>
+      <p><strong>Profesionální web za rozumnou cenu, rychle a bez komplikací.</strong> Texty zpracuji z krátkého telefonátu, fotky z vašich sociálních sítí. Výsledek je připravený k nasazení do 5 pracovních dnů.</p>
+      <p>Pracuji s oblastí Nymburska, Kolínska a celého Středočeského kraje – ale i vzdáleně po celé ČR.</p>
+      <div class="weby-cta">
+        <a href="#kontakt" class="btn-primary" style="font-size:.88rem;padding:.8rem 1.8rem">Zjistit více →</a>
+      </div>
+    </div>
+    <div class="weby-visual reveal">
+      <div class="weby-screenshot">
+        <div class="ws-bar">
+          <div class="ws-dot" style="background:#f87171"></div>
+          <div class="ws-dot" style="background:#fbbf24"></div>
+          <div class="ws-dot" style="background:#4ade80"></div>
+        </div>
+        <div class="ws-hero"><span>Znamenáček – Zednické práce</span></div>
+        <div class="ws-row" style="width:70%"></div>
+        <div class="ws-row" style="width:50%"></div>
+        <div class="ws-grid">
+          <div class="ws-card"></div>
+          <div class="ws-card"></div>
+          <div class="ws-card"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="contact-left reveal">
+    <span class="tag">Kontakt</span>
+    <h2 style="color:#fff">Pojďme si <em>napsat</em></h2>
+    <p class="lead">Hledáte spolehlivou správu BSShop e-shopu, nebo máte zájem o tvorbu webu? Napište mi – odpovím zpravidla do 24 hodin.</p>
+    <div class="contact-details">
+      <div class="cd">
+        <svg class="cd-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.93 12a19.79 19.79 0 01-3-8.58A2 2 0 012.88 1.5h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0121.22 17z"/></svg>
+        <div><div class="cd-label">Telefon</div><div class="cd-val"><a href="tel:+420731085499">+420 731 085 499</a></div></div>
+      </div>
+      <div class="cd">
+        <svg class="cd-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div><div class="cd-label">E-mail</div><div class="cd-val"><a href="/cdn-cgi/l/email-protection#97fbe2fcf6e4b9e7fefbfcf8d7fff8e3faf6fefbb9f4f8fa"><span class="__cf_email__" data-cfemail="4428312f25376a342d282f2b042c2b3029252d286a272b29">[email&#160;protected]</span></a></div></div>
+      </div>
+      <div class="cd">
+        <svg class="cd-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><div class="cd-label">Lokalita</div><div class="cd-val">Nymburk / remote po celé ČR</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal">
+    <h3>Napište mi</h3>
+    <div class="form-row">
+      <div class="field"><label>Jméno</label><input type="text" placeholder="Jan Novák"></div>
+      <div class="field"><label>Telefon</label><input type="tel" placeholder="+420 xxx xxx xxx"></div>
+    </div>
+    <div class="field"><label>E-mail</label><input type="email" placeholder="vas@email.cz"></div>
+    <div class="field">
+      <label>Typ spolupráce</label>
+      <select>
+        <option value="">Vyberte…</option>
+        <option>Správa e-shopu BSShop</option>
+        <option>E-mail marketing (Ecomail / Mailkit)</option>
+        <option>SEO a obsah</option>
+        <option>Testování a kontrola</option>
+        <option>Tvorba webu pro živnostníka</option>
+        <option>Jiné / nevím přesně</option>
+      </select>
+    </div>
+    <div class="field"><label>Zpráva</label><textarea placeholder="Stručně popište váš e-shop a co potřebujete řešit…"></textarea></div>
+    <button class="btn-submit" onclick="alert('Zpráva odeslána! Ozvu se vám do 24 hodin.')">Odeslat zprávu →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lukáš <span>Pilko</span></div>
+  <p>© 2024 · Správa e-shopů &amp; tvorba webů · Nymburk</p>
+  <div class="footer-links">
+    <a href="#">GDPR</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="https://eshop-sprava.cz" target="_blank">eshop-sprava.cz</a>
+  </div>
+</footer>
+
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 4) * 0.09 + 's';
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = scrollY > 60 ? '.7rem 4rem' : '1rem 4rem';
+  });
+</script>
+</body>
+</html>
