@@ -285,13 +285,22 @@
     .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
     .port-card {
       background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
-      padding: 1.8rem; transition: border-color .2s, box-shadow .2s;
-      display: flex; flex-direction: column;
+      padding: 0; transition: border-color .2s, box-shadow .2s;
+      display: flex; flex-direction: column; overflow: hidden;
     }
     .port-card:hover { border-color: var(--amber); box-shadow: 0 8px 24px rgba(217,119,6,.08); }
-    .port-card.placeholder { opacity: .6; border-style: dashed; }
-    .port-card.placeholder:hover { box-shadow: none; border-color: var(--line); opacity: .65; }
-    .port-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+    .port-img {
+      border-bottom: 1px solid var(--line); background: var(--bg2);
+      border-radius: calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0; overflow: hidden;
+    }
+    .port-img-bar {
+      background: #e2e6ea; padding: .45rem .7rem;
+      display: flex; gap: .32rem; align-items: center; border-bottom: 1px solid var(--line);
+    }
+    .port-img-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .port-img img { width: 100%; height: 162px; object-fit: cover; object-position: top center; display: block; }
+    .port-content { padding: 1.4rem 1.6rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+    .port-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .98rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
     .port-name a { color: inherit; text-decoration: none; transition: color .2s; }
     .port-name a:hover { color: var(--amber); }
     .port-badge { font-size: .72rem; font-weight: 500; color: var(--orange); background: #fff7ed; border: 1px solid #fed7aa; padding: .2rem .65rem; border-radius: 999px; display: inline-block; margin-bottom: .9rem; }
@@ -300,6 +309,7 @@
     .port-tag { font-size: .72rem; font-weight: 500; color: var(--muted); background: var(--bg3); padding: .2rem .6rem; border-radius: 4px; }
     .port-status { font-size: .75rem; color: var(--muted); margin-top: .9rem; display: flex; align-items: center; gap: .4rem; }
     .port-status.done { color: #16a34a; font-weight: 500; }
+    .port-status.preview { color: var(--amber); font-weight: 500; }
     .port-cta-link { display: inline-block; margin-top: auto; padding-top: .9rem; font-size: .82rem; color: var(--orange); text-decoration: none; font-weight: 500; transition: color .2s; }
     .port-cta-link:hover { color: var(--amber); }
 
@@ -520,7 +530,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80&auto=format&fit=crop" alt="Weby a e-shopy">
+    <img src="img/hero/hero.jpg" alt="Weby a e-shopy">
     <div class="hero-stat hero-stat-1">
       <div class="hs-val">Weby</div>
       <div class="hs-lab">Tvorba webů</div>
@@ -604,28 +614,70 @@
   </div>
   <div class="port-grid reveal">
     <div class="port-card">
-      <div class="port-name"><a href="https://zednik-nymburk.cz" target="_blank">Jiří Znamenáček | Mistrovské zednické práce</a></div>
-      <span class="port-badge">Řemeslník / živnostník</span>
-      <p class="port-desc">Landing page pro zedníka z Kovanic u Nymburka. Moderní jednostránkový web s přehledem služeb, referencemi a kontaktním formulářem.</p>
-      <div class="port-tags">
-        <span class="port-tag">Landing page</span>
-        <span class="port-tag">Responzivní design</span>
-        <span class="port-tag">SEO</span>
-        <span class="port-tag">Kovanice</span>
+      <div class="port-img">
+        <div class="port-img-bar">
+          <div class="port-img-dot" style="background:#f87171"></div>
+          <div class="port-img-dot" style="background:#fbbf24"></div>
+          <div class="port-img-dot" style="background:#4ade80"></div>
+        </div>
+        <img src="img/portfolio/zednik-preview.jpg" alt="Náhled webu Jiří Znamenáček – Zednictví">
       </div>
-      <div class="port-status done">✓ Dokončeno a spuštěno</div>
+      <div class="port-content">
+        <div class="port-name"><a href="https://zednik-nymburk.cz" target="_blank">Jiří Znamenáček | Mistrovské zednické práce</a></div>
+        <span class="port-badge">Řemeslník / živnostník</span>
+        <p class="port-desc">Landing page pro zedníka z Kovanic u Nymburka. Moderní jednostránkový web s přehledem služeb, referencemi a kontaktním formulářem.</p>
+        <div class="port-tags">
+          <span class="port-tag">Landing page</span>
+          <span class="port-tag">Responzivní design</span>
+          <span class="port-tag">SEO</span>
+          <span class="port-tag">Kovanice</span>
+        </div>
+        <div class="port-status done">✓ Dokončeno a spuštěno</div>
+      </div>
     </div>
-    <div class="port-card placeholder">
-      <div class="port-name">Připravujeme…</div>
-      <span class="port-badge">Nový projekt</span>
-      <p class="port-desc">Další web právě vzniká. Máte zájem o vlastní web? Ozvěte se.</p>
-      <a href="#kontakt" class="port-cta-link">Poptat web →</a>
+    <div class="port-card">
+      <div class="port-img">
+        <div class="port-img-bar">
+          <div class="port-img-dot" style="background:#f87171"></div>
+          <div class="port-img-dot" style="background:#fbbf24"></div>
+          <div class="port-img-dot" style="background:#4ade80"></div>
+        </div>
+        <img src="img/portfolio/langr-preview.jpg" alt="Náhled webu Langr – Instalatér">
+      </div>
+      <div class="port-content">
+        <div class="port-name"><a href="https://lukaspilko1-sketch.github.io/instal-langr/" target="_blank">Lukáš Langr | Instalatér &amp; topenář</a></div>
+        <span class="port-badge">Živnostník / instalatér</span>
+        <p class="port-desc">Web pro instalatéra a topenáře. Moderní jednostránkový web s ukázkami práce, přehledem služeb a kontaktním formulářem.</p>
+        <div class="port-tags">
+          <span class="port-tag">Landing page</span>
+          <span class="port-tag">Responzivní design</span>
+          <span class="port-tag">Galerie prací</span>
+          <span class="port-tag">SEO</span>
+        </div>
+        <div class="port-status preview">⧗ Preview verze</div>
+      </div>
     </div>
-    <div class="port-card placeholder">
-      <div class="port-name">Připravujeme…</div>
-      <span class="port-badge">Nový projekt</span>
-      <p class="port-desc">Další web právě vzniká. Máte zájem o vlastní web? Ozvěte se.</p>
-      <a href="#kontakt" class="port-cta-link">Poptat web →</a>
+    <div class="port-card">
+      <div class="port-img">
+        <div class="port-img-bar">
+          <div class="port-img-dot" style="background:#f87171"></div>
+          <div class="port-img-dot" style="background:#fbbf24"></div>
+          <div class="port-img-dot" style="background:#4ade80"></div>
+        </div>
+        <img src="img/portfolio/fotbal-preview.jpg" alt="Náhled webu SK Vrbová Lhota">
+      </div>
+      <div class="port-content">
+        <div class="port-name"><a href="https://lukaspilko1-sketch.github.io/sk-vrbova-lhota/" target="_blank">SK Vrbová Lhota z.s. | Fotbalový klub</a></div>
+        <span class="port-badge">Spolek / fotbalový klub</span>
+        <p class="port-desc">Web pro místní fotbalový klub z Nymburska. Aktuality, galerie, přehled oddílů a informace o nejbližších zápasech.</p>
+        <div class="port-tags">
+          <span class="port-tag">Klub / spolek</span>
+          <span class="port-tag">Aktuality</span>
+          <span class="port-tag">Galerie</span>
+          <span class="port-tag">Nymbursko</span>
+        </div>
+        <div class="port-status preview">⧗ Preview verze</div>
+      </div>
     </div>
   </div>
 </section>

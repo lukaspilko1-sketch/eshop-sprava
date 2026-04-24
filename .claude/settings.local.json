@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(curl -L \"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&q=85&auto=format&fit=crop\" -o \"C:/Users/lukas/Documents/PRACOVNÍ/Weby/eshop-sprava/img/hero/hero.jpg\" --progress-bar)",
+      "WebSearch",
+      "WebFetch(domain:zednik-nymburk.cz)",
+      "WebFetch(domain:langr.cz)",
+      "Bash(curl -L \"https://zednik-nymburk.cz/img/homepage/hero.jpg\" -o \"C:/Users/lukas/Documents/PRACOVNÍ/Weby/eshop-sprava/img/portfolio/zednik-preview.jpg\" --progress-bar)",
+      "WebFetch(domain:lukaspilko1-sketch.github.io)",
+      "Bash(curl -L \"https://lukaspilko1-sketch.github.io/sk-vrbova-lhota/img/hero/tym-01.jpg\" -o \"C:/Users/lukas/Documents/PRACOVNÍ/Weby/eshop-sprava/img/portfolio/fotbal-preview.jpg\" --progress-bar)",
+      "Bash(curl -L \"https://lh3.googleusercontent.com/aida-public/AB6AXuCs5jmmpUbo2HrC_MvOFVD_kU5HFnR42ugVf6FU6t1Svi8rMmKrmgdbVNN0QOH1RmbGc79RJL8yKBrkhlGI_SZH84lnoI9d-UdY8DoZ0fTLDgGpTntUqZMpGroK6Z0dEtsrKP__pauTT8E3NWlIa627e6ZmNikmKFaD6tC1QFtEVBVmLtblYhozg9GpL_CX8PzK2MFYT76qb37iVzutki-gPGPZvyaHq6li1HGXroD9XkNRb5e0_Ky_EbVmDXCVMKfS6lBlsYCggQ\" -o \"C:/Users/lukas/Documents/PRACOVNÍ/Weby/eshop-sprava/img/portfolio/langr-preview.jpg\" --progress-bar)",
+      "Bash(curl -L \"https://lh3.googleusercontent.com/aida-public/AB6AXuAbmN2HuwOeIiKBfPtmzFs1KT6m8aFfuRjyNpK5jaMktdy4M6pPkNn5dLDWrF6hgXTtbY9IiT2NzrEkRu5K3SRtB7_mm_kJT5hYuEBYE4mgXTfBd3GpTqHjVsz9GJoKzr6xbXKT7VT5Y3qmwR4WfXdKg1zWe1lZjZuVuYKBv_v0INAPEGJ7SYMn68Aend0009eOe_DL1LWW2ho1Wi-GGuX0LCqoXM1gfht1fVZ0ywbQ\" -o \"C:/Users/lukas/Documents/PRACOVNÍ/Weby/eshop-sprava/img/portfolio/langr-preview.jpg\" --progress-bar)"
+    ]
+  }
+}
