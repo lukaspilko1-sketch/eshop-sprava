@@ -4,8 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#f8f9fa"/>
-  <title>Lukáš Pilko – Správa e-shopu | BSShop specialista</title>
-  <meta name="description" content="Správa, optimalizace a testování e-shopů na platformě BSShop. Denní administrace, SEO, e-mail marketing a Pohoda."/>
+  <title>Lukáš Pilko – Weby pro firmy a živnostníky | BSShop specialista</title>
+  <meta name="description" content="Tvorba moderních webů pro firmy a živnostníky. Správa e-shopů na platformě BSShop. Pohoda, Ecomail, SEO. Nymburk / remote po celé ČR."/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -171,6 +171,28 @@
     .sec-head { margin-bottom: 3rem; }
     .sec-head .tag { margin-bottom: .75rem; }
 
+    /* WEBY – dark sekce */
+    #weby {
+      background: var(--ink);
+      position: relative; overflow: hidden;
+    }
+    #weby::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(234,88,12,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,88,12,.05) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+    .weby-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 2; }
+    .weby-text .tag { background: rgba(234,88,12,.15); border-color: rgba(234,88,12,.3); color: var(--orange-gl); margin-bottom: .75rem; }
+    .weby-text h2 { color: #fff; margin-bottom: 1.1rem; }
+    .weby-text h2 em { color: var(--orange-gl); }
+    .weby-text p { font-size: 1rem; color: rgba(255,255,255,.55); line-height: 1.85; margin-bottom: 1rem; }
+    .weby-text p strong { color: rgba(255,255,255,.85); font-weight: 500; }
+    .weby-features { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
+    .weby-right { display: flex; flex-direction: column; }
+    .weby-cta { margin-top: 1.5rem; }
+
     /* O MNĚ */
     #o-mne { background: var(--white); }
     .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
@@ -258,6 +280,47 @@
       color: var(--orange-gl);
     }
 
+    /* PORTFOLIO */
+    #portfolio { background: var(--white); border-top: 1px solid var(--line); }
+    .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .port-card {
+      background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 1.8rem; transition: border-color .2s, box-shadow .2s;
+      display: flex; flex-direction: column;
+    }
+    .port-card:hover { border-color: var(--amber); box-shadow: 0 8px 24px rgba(217,119,6,.08); }
+    .port-card.placeholder { opacity: .6; border-style: dashed; }
+    .port-card.placeholder:hover { box-shadow: none; border-color: var(--line); opacity: .65; }
+    .port-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+    .port-name a { color: inherit; text-decoration: none; transition: color .2s; }
+    .port-name a:hover { color: var(--amber); }
+    .port-badge { font-size: .72rem; font-weight: 500; color: var(--orange); background: #fff7ed; border: 1px solid #fed7aa; padding: .2rem .65rem; border-radius: 999px; display: inline-block; margin-bottom: .9rem; }
+    .port-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
+    .port-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .port-tag { font-size: .72rem; font-weight: 500; color: var(--muted); background: var(--bg3); padding: .2rem .6rem; border-radius: 4px; }
+    .port-status { font-size: .75rem; color: var(--muted); margin-top: .9rem; display: flex; align-items: center; gap: .4rem; }
+    .port-status.done { color: #16a34a; font-weight: 500; }
+    .port-cta-link { display: inline-block; margin-top: auto; padding-top: .9rem; font-size: .82rem; color: var(--orange); text-decoration: none; font-weight: 500; transition: color .2s; }
+    .port-cta-link:hover { color: var(--amber); }
+
+    /* ESHOP DIVIDER */
+    .eshop-divider {
+      padding: 2.5rem 4rem;
+      background: var(--bg3);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+    .eshop-divider .tag { margin-bottom: .6rem; }
+    .eshop-divider h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 800; color: var(--ink);
+      margin-top: .5rem; line-height: 1.2;
+    }
+    .eshop-divider h3 em { font-style: normal; color: var(--orange); }
+    .eshop-divider .lead { margin: .6rem auto 0; max-width: 52ch; text-align: center; font-size: .95rem; }
+
     /* SLUŽBY */
     #sluzby { background: var(--bg); }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
@@ -301,7 +364,7 @@
     .ref-duration svg { color: var(--orange); flex-shrink: 0; }
 
     /* PROCESS */
-    #postup { background: var(--bg2); border-top: 1px solid var(--line); }
+    #postup, #postup-weby { background: var(--bg2); border-top: 1px solid var(--line); }
     .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: 3rem; }
     .steps::before {
       content: ''; position: absolute; top: 1.8rem; left: 12.5%; right: 12.5%;
@@ -323,29 +386,6 @@
     }
     .step h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
     .step p { font-size: .83rem; color: var(--muted); line-height: 1.7; }
-
-    /* WEBY */
-    #weby { background: var(--white); border-top: 1px solid var(--line); }
-    .weby-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .weby-text .tag { margin-bottom: .75rem; }
-    .weby-text h2 { margin-bottom: 1.1rem; }
-    .weby-text p { font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
-    .weby-text p strong { color: var(--ink); font-weight: 500; }
-    .weby-cta { margin-top: 1.8rem; }
-    .weby-visual {
-      background: var(--bg2); border: 1px solid var(--line);
-      border-radius: 16px; overflow: hidden; height: 380px;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    .weby-screenshot { width: 90%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.12); background: var(--white); border: 1px solid var(--line); padding: 1.2rem; }
-    .ws-bar { display: flex; gap: .4rem; margin-bottom: .8rem; }
-    .ws-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .ws-hero { height: 60px; background: linear-gradient(135deg, #f97316, #fb923c); border-radius: 6px; margin-bottom: .7rem; display: flex; align-items: center; padding: 0 1rem; }
-    .ws-hero span { font-size: .7rem; font-weight: 700; color: #fff; opacity: .8; }
-    .ws-row { height: 12px; background: var(--bg3); border-radius: 4px; margin-bottom: .5rem; }
-    .ws-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .4rem; margin-top: .5rem; }
-    .ws-card { height: 32px; background: var(--bg2); border-radius: 4px; border: 1px solid var(--line); }
 
     /* KONTAKT */
     #kontakt { background: var(--ink); border-top: 1px solid rgba(255,255,255,.09); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; position: relative; overflow: hidden; }
@@ -417,6 +457,7 @@
     @media (max-width: 1100px) {
       .services-grid { grid-template-columns: 1fr 1fr; }
       .ref-grid { grid-template-columns: 1fr 1fr; }
+      .port-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 1024px) {
       nav { padding: 1rem 2rem; } nav ul { display: none; }
@@ -431,12 +472,14 @@
       footer { padding: 1.5rem 2rem; flex-direction: column; text-align: center; }
       .contact-form { padding: 1.8rem; }
       .about-grid-stats { grid-template-columns: repeat(3, 1fr); }
+      .eshop-divider { padding: 2rem 2rem; }
     }
     @media (max-width: 640px) {
-      .services-grid, .ref-grid, .steps { grid-template-columns: 1fr; }
+      .services-grid, .ref-grid, .steps, .port-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .hero-badges { gap: .5rem; }
       .about-grid-stats { grid-template-columns: 1fr 1fr; }
+      .eshop-divider { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -447,10 +490,11 @@
   <div class="nav-logo">Lukáš <span>Pilko</span></div>
   <ul>
     <li><a href="#o-mne">O mně</a></li>
-    <li><a href="#bsshop">BSShop</a></li>
+    <li><a href="#weby">Weby</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#bsshop">E-shopy</a></li>
     <li><a href="#sluzby">Služby</a></li>
     <li><a href="#reference">Reference</a></li>
-    <li><a href="#weby">Weby</a></li>
     <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
   </ul>
   <a href="#kontakt" class="nav-cta">Napsat zprávu</a>
@@ -460,26 +504,26 @@
 <section id="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">
-      <span class="tag">✦ BSShop · Pohoda · E-mail marketing</span>
+      <span class="tag">✦ Weby · BSShop · Pohoda · Ecomail</span>
     </div>
-    <h1>Správa e-shopu,<br>na které se <em>můžete<br>spolehnout</em></h1>
-    <p class="hero-sub">Komplexní administrace e-shopů na platformě BSShop. Denní správa, testování, SEO a e-mail marketing – bez chybovosti, bez výpadků.</p>
+    <h1>Weby a e-shopy,<br>na které se <em>můžete<br>spoléhnout</em></h1>
+    <p class="hero-sub">Tvorba moderních webů pro firmy a živnostníky. Správa e-shopů na platformě BSShop. Vše bez zbytečné složitosti, rychle a spolehlivě.</p>
     <div class="hero-cta">
       <a href="#kontakt" class="btn-primary">Nezávazně napsat</a>
-      <a href="#sluzby" class="btn-ghost">Přehled služeb →</a>
+      <a href="#weby" class="btn-ghost">Tvorba webů →</a>
     </div>
     <div class="hero-badges">
+      <div class="hbadge"><div class="hbadge-dot"></div> Weby do 5 dnů</div>
       <div class="hbadge"><div class="hbadge-dot"></div> BSShop specialista</div>
-      <div class="hbadge"><div class="hbadge-dot"></div> Pohoda – napříč agendami</div>
-      <div class="hbadge"><div class="hbadge-dot"></div> Ecomail &amp; Mailkit</div>
+      <div class="hbadge"><div class="hbadge-dot"></div> Pohoda &amp; Ecomail</div>
       <div class="hbadge"><div class="hbadge-dot"></div> Nymburk / remote</div>
     </div>
   </div>
   <div class="hero-right">
-    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80&auto=format&fit=crop" alt="E-shop správa">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80&auto=format&fit=crop" alt="Weby a e-shopy">
     <div class="hero-stat hero-stat-1">
-      <div class="hs-val">3+</div>
-      <div class="hs-lab">Long-term klienti</div>
+      <div class="hs-val">Weby</div>
+      <div class="hs-lab">Tvorba webů</div>
     </div>
     <div class="hero-stat hero-stat-2">
       <div class="hs-val">BSShop</div>
@@ -492,20 +536,136 @@
 <div class="usp-bar">
   <div class="usp-item">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-    Každá změna testována před nasazením
+    Weby do 5 pracovních dní
   </div>
   <div class="usp-item">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Rychlá odezva, spolehlivý provoz
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+    BSShop specialista
   </div>
   <div class="usp-item">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
     Pracuji sám – přímá komunikace
   </div>
   <div class="usp-item">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-    Desktop i mobilní testování
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Nymburk &amp; remote po celé ČR
   </div>
+</div>
+
+<!-- WEBY – TVORBA WEBŮ (dark sekce) -->
+<section id="weby">
+  <div class="weby-grid">
+    <div class="weby-text reveal">
+      <span class="tag">✦ Tvorba webů</span>
+      <h2>Web, který <em>funguje</em></h2>
+      <p>Tvořím weby pro živnostníky, malé firmy a spolky – řemeslníky, lékaře, fotbalové kluby, kosmetičky a další. Bez zbytečné složitosti. Texty zpracuji z krátkého hovoru, fotky z vašich sociálních sítí.</p>
+      <div class="weby-features">
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          <div><h4>Živnostníci a řemeslníci</h4><p>Instalatéři, elektrikáři, zedníci, tesaři – jednoduchý web, který přivede zákazníky.</p></div>
+        </div>
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div><h4>Malé firmy a provozovny</h4><p>Restaurace, kadeřnictví, kosmetické salony, autoservisy a další malé provozovny.</p></div>
+        </div>
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <div><h4>Spolky a sportovní kluby</h4><p>Fotbalové kluby, TJ, hasičské sbory, spolky – web s aktualitami a kontakty.</p></div>
+        </div>
+        <div class="bsf">
+          <svg class="bsf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <div><h4>Kdokoliv, kdo potřebuje web</h4><p>Pokud ještě nemáte web nebo ten současný nevypadá dobře – ozvěte se.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="weby-right reveal">
+      <div class="bsshop-visual">
+        <div class="bsv-title">Co je v ceně</div>
+        <div class="bsv-row"><div class="bsv-row-left">Telefonát zdarma – zjistím co potřebuješ</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="bsv-row"><div class="bsv-row-left">Texty zpracuji z našeho hovoru</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="bsv-row"><div class="bsv-row-left">Fotky z Facebooku nebo Instagramu</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="bsv-row"><div class="bsv-row-left">Responzivní design – mobil i desktop</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="bsv-row"><div class="bsv-row-left">Nasazení do 5 pracovních dní</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="bsv-row"><div class="bsv-row-left">Základní SEO (titulek, popis, rychlost)</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+      <div class="weby-cta">
+        <a href="#kontakt" class="btn-primary">Nezávazně poptat →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="sec-head reveal">
+    <span class="tag">Portfolio</span>
+    <h2>Weby, které <em>jsem vytvořil</em></h2>
+    <p class="lead">Ukázka projektů z mé tvorby. Každý web je připraven na míru – od telefonátu až po spuštění.</p>
+  </div>
+  <div class="port-grid reveal">
+    <div class="port-card">
+      <div class="port-name"><a href="https://zednik-nymburk.cz" target="_blank">Jiří Znamenáček | Mistrovské zednické práce</a></div>
+      <span class="port-badge">Řemeslník / živnostník</span>
+      <p class="port-desc">Landing page pro zedníka z Kovanic u Nymburka. Moderní jednostránkový web s přehledem služeb, referencemi a kontaktním formulářem.</p>
+      <div class="port-tags">
+        <span class="port-tag">Landing page</span>
+        <span class="port-tag">Responzivní design</span>
+        <span class="port-tag">SEO</span>
+        <span class="port-tag">Kovanice</span>
+      </div>
+      <div class="port-status done">✓ Dokončeno a spuštěno</div>
+    </div>
+    <div class="port-card placeholder">
+      <div class="port-name">Připravujeme…</div>
+      <span class="port-badge">Nový projekt</span>
+      <p class="port-desc">Další web právě vzniká. Máte zájem o vlastní web? Ozvěte se.</p>
+      <a href="#kontakt" class="port-cta-link">Poptat web →</a>
+    </div>
+    <div class="port-card placeholder">
+      <div class="port-name">Připravujeme…</div>
+      <span class="port-badge">Nový projekt</span>
+      <p class="port-desc">Další web právě vzniká. Máte zájem o vlastní web? Ozvěte se.</p>
+      <a href="#kontakt" class="port-cta-link">Poptat web →</a>
+    </div>
+  </div>
+</section>
+
+<!-- POSTUP – TVORBA WEBU -->
+<section id="postup-weby">
+  <div class="sec-head reveal" style="text-align:center">
+    <span class="tag" style="margin:0 auto .75rem">Jak to funguje</span>
+    <h2 style="text-align:center">Jak tvorba <em>webu funguje</em></h2>
+    <p class="lead" style="margin:.85rem auto 0; text-align:center; max-width:50ch">Jednoduše a rychle. Od prvního hovoru ke spuštěnému webu – bez zdlouhavého procesu.</p>
+  </div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-circle">1</div>
+      <h3>Telefonát</h3>
+      <p>Zavoláme si. Zjistím co děláte, co potřebujete a jak má web vypadat. 30 minut, zdarma.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">2</div>
+      <h3>Podklady</h3>
+      <p>Texty zpracuji sám z našeho hovoru. Fotky pošlete z mobilu nebo je stáhnu z vašich sociálních sítí.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">3</div>
+      <h3>Web do 5 dní</h3>
+      <p>Navrhnu a připravím web. Dostanete náhled k odsouhlasení. Po schválení finalizuji.</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">4</div>
+      <h3>Nasazení a předání</h3>
+      <p>Spustím web na vaší doméně, nastavím základní SEO a předám přístupy. Hotovo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIZUÁLNÍ ODDĚLOVAČ – E-SHOPY -->
+<div class="eshop-divider">
+  <span class="tag">Také se starám o…</span>
+  <h3>Správa e-shopů na platformě <em>BSShop</em></h3>
+  <p class="lead">Dlouhodobá administrace BSShop e-shopů – produkty, SEO, e-mail marketing a Pohoda.</p>
 </div>
 
 <!-- O MNĚ -->
@@ -717,11 +877,11 @@
   </div>
 </section>
 
-<!-- JAK SPOLUPRÁCE FUNGUJE -->
+<!-- JAK FUNGUJE SPRÁVA E-SHOPU -->
 <section id="postup">
   <div class="sec-head reveal" style="text-align:center">
-    <span class="tag" style="margin:0 auto .75rem">Jak to funguje</span>
-    <h2 style="text-align:center">Jak <em>spolupráce</em> funguje</h2>
+    <span class="tag" style="margin:0 auto .75rem">Správa e-shopů</span>
+    <h2 style="text-align:center">Jak funguje <em>správa e-shopu</em></h2>
     <p class="lead" style="margin:.85rem auto 0; text-align:center; max-width:50ch">Žádná složitá onboarding řízení. Domluvíme se, zorientuji se v systému a jdu pracovat.</p>
   </div>
   <div class="steps reveal">
@@ -744,39 +904,6 @@
       <div class="step-circle">4</div>
       <h3>Dlouhodobá péče</h3>
       <p>Starám se o chod e-shopu průběžně. Problémy řeším proaktivně, vy se soustředíte na byznys.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WEBY PRO ŘEMESLNÍKY -->
-<section id="weby">
-  <div class="weby-grid">
-    <div class="weby-text reveal">
-      <span class="tag">✦ Nová služba</span>
-      <h2>Tvorba webů<br>pro <em>řemeslníky</em></h2>
-      <p>Kromě správy e-shopů nově nabízím tvorbu moderních landing pages pro živnostníky a malé firmy – řemeslníky, stavební firmy, instalatéry a další, kteří nemají čas ani chuť řešit IT.</p>
-      <p><strong>Profesionální web za rozumnou cenu, rychle a bez komplikací.</strong> Texty zpracuji z krátkého telefonátu, fotky z vašich sociálních sítí. Výsledek je připravený k nasazení do 5 pracovních dnů.</p>
-      <p>Pracuji s oblastí Nymburska, Kolínska a celého Středočeského kraje – ale i vzdáleně po celé ČR.</p>
-      <div class="weby-cta">
-        <a href="#kontakt" class="btn-primary" style="font-size:.88rem;padding:.8rem 1.8rem">Zjistit více →</a>
-      </div>
-    </div>
-    <div class="weby-visual reveal">
-      <div class="weby-screenshot">
-        <div class="ws-bar">
-          <div class="ws-dot" style="background:#f87171"></div>
-          <div class="ws-dot" style="background:#fbbf24"></div>
-          <div class="ws-dot" style="background:#4ade80"></div>
-        </div>
-        <div class="ws-hero"><span>Znamenáček – Zednické práce</span></div>
-        <div class="ws-row" style="width:70%"></div>
-        <div class="ws-row" style="width:50%"></div>
-        <div class="ws-grid">
-          <div class="ws-card"></div>
-          <div class="ws-card"></div>
-          <div class="ws-card"></div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
