@@ -39,7 +39,7 @@
       padding: .28rem .75rem; border-radius: 999px;
     }
     h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.9rem, 3.8vw, 2.9rem); font-weight: 800; line-height: 1.1; color: var(--ink); }
-    h2 em { font-style: normal; color: var(--orange)  }
+    h2 em { font-style: normal; color: var(--orange); }
     .lead { font-size: 1.05rem; color: var(--muted); line-height: 1.82; margin-top: .85rem; max-width: 58ch; }
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -75,7 +75,6 @@
       padding-top: 70px; overflow: hidden;
       position: relative;
     }
-    /* subtle grid pattern */
     #hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -123,7 +122,6 @@
     }
     .btn-ghost:hover { border-color: var(--amber-lt); color: var(--amber-gl); }
 
-    /* hero badges */
     .hero-badges {
       display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;
       opacity:0; animation: fadeUp .5s .56s ease forwards;
@@ -136,7 +134,6 @@
     }
     .hbadge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber-lt); flex-shrink: 0; }
 
-    /* hero right */
     .hero-right { position: relative; overflow: hidden; }
     .hero-right img { width: 100%; height: 100%; object-fit: cover; opacity: .35; display: block; }
     .hero-right::before {
@@ -148,7 +145,6 @@
       background: linear-gradient(135deg, rgba(234,88,12,.2) 0%, transparent 60%);
       z-index: 1;
     }
-    /* floating stat cards */
     .hero-stat {
       position: absolute; z-index: 3;
       background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
@@ -200,15 +196,15 @@
     .about-grid-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
     .ast {
       background: var(--bg2); border-radius: var(--r); padding: 1.1rem 1.2rem;
-      border-top: 3px solid var(--orange) 
+      border-top: 3px solid var(--orange);
     }
     .ast:nth-child(2) { border-top-color: var(--amber); }
     .ast:nth-child(3) { border-top-color: var(--orange-lt); }
-    .ast-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--orange)  line-height: 1; }
+    .ast-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--orange); line-height: 1; }
     .ast:nth-child(2) .ast-val { color: var(--amber); }
     .ast-lab { font-size: .72rem; color: var(--muted); font-weight: 500; margin-top: .3rem; text-transform: uppercase; letter-spacing: .07em; }
 
-    /* SPECIALIZAÇÃO – BSShop highlight */
+    /* BSSHOP */
     #bsshop {
       background: var(--ink);
       position: relative; overflow: hidden;
@@ -278,7 +274,7 @@
       transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
     }
     .svc-card:hover::before { transform: scaleX(1); }
-    .svc-icon { color: var(--orange)  margin-bottom: 1.1rem; }
+    .svc-icon { color: var(--orange); margin-bottom: 1.1rem; }
     .svc-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: .55rem; }
     .svc-card p { font-size: .87rem; color: var(--muted); line-height: 1.78; }
     .svc-card ul { margin-top: .6rem; list-style: none; }
@@ -302,7 +298,7 @@
     .ref-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
     .ref-tag { font-size: .72rem; font-weight: 500; color: var(--muted); background: var(--bg3); padding: .2rem .6rem; border-radius: 4px; }
     .ref-duration { font-size: .75rem; color: var(--muted); margin-top: .9rem; display: flex; align-items: center; gap: .4rem; }
-    .ref-duration svg { color: var(--orange)  flex-shrink: 0; }
+    .ref-duration svg { color: var(--orange); flex-shrink: 0; }
 
     /* PROCESS */
     #postup { background: var(--bg2); border-top: 1px solid var(--line); }
@@ -315,7 +311,7 @@
     .step { padding: 1.5rem; text-align: center; }
     .step-circle {
       width: 36px; height: 36px; border-radius: 50%;
-      background: var(--orange)  color: #fff;
+      background: var(--orange); color: #fff;
       display: flex; align-items: center; justify-content: center;
       font-family: 'Plus Jakarta Sans', sans-serif; font-size: .85rem; font-weight: 800;
       margin: 0 auto 1.4rem; position: relative; z-index: 2;
@@ -328,7 +324,7 @@
     .step h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
     .step p { font-size: .83rem; color: var(--muted); line-height: 1.7; }
 
-    /* WEBY SEKCE */
+    /* WEBY */
     #weby { background: var(--white); border-top: 1px solid var(--line); }
     .weby-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .weby-text .tag { margin-bottom: .75rem; }
@@ -397,6 +393,16 @@
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
     .btn-submit { width: 100%; background: var(--amber); border: none; cursor: pointer; padding: .95rem; font-family: 'DM Sans', sans-serif; font-size: .9rem; font-weight: 600; color: #fff; border-radius: 7px; transition: background .2s; margin-top: .4rem; box-shadow: 0 4px 18px rgba(217,119,6,.4); }
     .btn-submit:hover { background: var(--amber-lt); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+
+    /* Form stavy */
+    .form-success {
+      display: none; text-align: center; padding: 2rem 1rem;
+    }
+    .form-success .fs-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+    .form-success h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .4rem; }
+    .form-success p { font-size: .9rem; color: rgba(255,255,255,.5); }
+    .form-error-msg { display: none; background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.3); border-radius: 7px; padding: .7rem 1rem; font-size: .85rem; color: #fca5a5; margin-top: .5rem; }
 
     /* FOOTER */
     footer { background: #181818; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,.09); }
@@ -506,7 +512,6 @@
 <section id="o-mne">
   <div class="about-grid">
     <div class="about-photo reveal">
-      <!-- <img src="foto.jpg" alt="Lukáš Pilko"> -->
       <div class="about-photo-placeholder">
         <span class="ph-icon">👤</span>
         <p>Vaše foto zde</p>
@@ -557,38 +562,14 @@
     </div>
     <div class="bsshop-visual reveal">
       <div class="bsv-title">Přehled dovedností</div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">BSShop / BSAdmin</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">Pohoda – práce napříč agendami</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">Ecomail</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">Mailkit</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">HTML &amp; CSS úpravy</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">Import XLS / XML</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">Responzivní testování</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
-      <div class="bsv-row">
-        <div class="bsv-row-left">SEO on-page</div>
-        <div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      </div>
+      <div class="bsv-row"><div class="bsv-row-left">BSShop / BSAdmin</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="bsv-row"><div class="bsv-row-left">Pohoda – práce napříč agendami</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="bsv-row"><div class="bsv-row-left">Ecomail</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="bsv-row"><div class="bsv-row-left">Mailkit</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="bsv-row"><div class="bsv-row-left">HTML &amp; CSS úpravy</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="bsv-row"><div class="bsv-row-left">Import XLS / XML</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="bsv-row"><div class="bsv-row-left">Responzivní testování</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      <div class="bsv-row"><div class="bsv-row-left">SEO on-page</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
     </div>
   </div>
 </section>
@@ -601,7 +582,6 @@
     <p class="lead">Kompletní správa e-shopu nebo konkrétní oblast – domluvíme se podle vašich potřeb.</p>
   </div>
   <div class="services-grid reveal">
-
     <div class="svc-card">
       <div class="svc-n">01</div>
       <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -614,7 +594,6 @@
         <li>Příprava a správa akcí</li>
       </ul>
     </div>
-
     <div class="svc-card">
       <div class="svc-n">02</div>
       <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
@@ -627,7 +606,6 @@
         <li>Správa obrázků a dokumentace</li>
       </ul>
     </div>
-
     <div class="svc-card">
       <div class="svc-n">03</div>
       <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -640,7 +618,6 @@
         <li>Ověření hromadných úprav</li>
       </ul>
     </div>
-
     <div class="svc-card">
       <div class="svc-n">04</div>
       <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -653,7 +630,6 @@
         <li>Dlouhodobé zlepšování viditelnosti</li>
       </ul>
     </div>
-
     <div class="svc-card">
       <div class="svc-n">05</div>
       <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -666,7 +642,6 @@
         <li>Vyhodnocování a optimalizace</li>
       </ul>
     </div>
-
     <div class="svc-card">
       <div class="svc-n">06</div>
       <svg class="svc-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -679,7 +654,6 @@
         <li>Správa dat a synchronizace</li>
       </ul>
     </div>
-
   </div>
 </section>
 
@@ -691,7 +665,6 @@
     <p class="lead">Dlouhodobá spolupráce, ne jednorázové zakázky. Klienty si váží a starám se o jejich e-shopy jako o vlastní.</p>
   </div>
   <div class="ref-grid reveal">
-
     <div class="ref-card">
       <div class="ref-domain">
         <a href="https://www.acara.cz" target="_blank">acara.cz</a>
@@ -711,7 +684,6 @@
         Dlouhodobá spolupráce
       </div>
     </div>
-
     <div class="ref-card">
       <div class="ref-domain"><a href="https://www.exo-eko.cz" target="_blank">exo-eko.cz</a></div>
       <span class="ref-segment">Chovatelské potřeby</span>
@@ -727,7 +699,6 @@
         Dlouhodobá spolupráce
       </div>
     </div>
-
     <div class="ref-card">
       <div class="ref-domain"><a href="https://www.greenpets.cz" target="_blank">greenpets.cz</a></div>
       <span class="ref-segment">Chovatelské potřeby</span>
@@ -743,7 +714,6 @@
         Dlouhodobá spolupráce
       </div>
     </div>
-
   </div>
 </section>
 
@@ -824,7 +794,7 @@
       </div>
       <div class="cd">
         <svg class="cd-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <div><div class="cd-label">E-mail</div><div class="cd-val"><a href="/cdn-cgi/l/email-protection#97fbe2fcf6e4b9e7fefbfcf8d7fff8e3faf6fefbb9f4f8fa"><span class="__cf_email__" data-cfemail="4428312f25376a342d282f2b042c2b3029252d286a272b29">[email&#160;protected]</span></a></div></div>
+        <div><div class="cd-label">E-mail</div><div class="cd-val"><a href="mailto:lukas@pilko.cz">lukas@pilko.cz</a></div></div>
       </div>
       <div class="cd">
         <svg class="cd-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -833,34 +803,62 @@
     </div>
   </div>
 
+  <!-- FORMSPREE FORMULÁŘ -->
+  <!-- ⚠️ Nahraď YOUR_FORM_ID za tvůj Formspree endpoint: https://formspree.io/f/YOUR_FORM_ID -->
   <div class="contact-form reveal">
     <h3>Napište mi</h3>
-    <div class="form-row">
-      <div class="field"><label>Jméno</label><input type="text" placeholder="Jan Novák"></div>
-      <div class="field"><label>Telefon</label><input type="tel" placeholder="+420 xxx xxx xxx"></div>
+    <div id="form-fields">
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <!-- honeypot spam ochrana -->
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_subject" value="Nová zpráva z webu – lukas-pilko.cz">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="jmeno">Jméno</label>
+            <input type="text" id="jmeno" name="jmeno" placeholder="Jan Novák" required>
+          </div>
+          <div class="field">
+            <label for="telefon">Telefon</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="+420 xxx xxx xxx">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" placeholder="vas@email.cz" required>
+        </div>
+        <div class="field">
+          <label for="sluzba">Typ spolupráce</label>
+          <select id="sluzba" name="sluzba">
+            <option value="">Vyberte…</option>
+            <option>Správa e-shopu BSShop</option>
+            <option>E-mail marketing (Ecomail / Mailkit)</option>
+            <option>SEO a obsah</option>
+            <option>Testování a kontrola</option>
+            <option>Tvorba webu pro živnostníka</option>
+            <option>Jiné / nevím přesně</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="zprava">Zpráva</label>
+          <textarea id="zprava" name="zprava" placeholder="Stručně popište váš e-shop a co potřebujete řešit…"></textarea>
+        </div>
+        <div class="form-error-msg" id="form-error">Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo napište přímo na e-mail.</div>
+        <button type="submit" class="btn-submit" id="btn-submit">Odeslat zprávu →</button>
+      </form>
     </div>
-    <div class="field"><label>E-mail</label><input type="email" placeholder="vas@email.cz"></div>
-    <div class="field">
-      <label>Typ spolupráce</label>
-      <select>
-        <option value="">Vyberte…</option>
-        <option>Správa e-shopu BSShop</option>
-        <option>E-mail marketing (Ecomail / Mailkit)</option>
-        <option>SEO a obsah</option>
-        <option>Testování a kontrola</option>
-        <option>Tvorba webu pro živnostníka</option>
-        <option>Jiné / nevím přesně</option>
-      </select>
+    <div class="form-success" id="form-success">
+      <div class="fs-icon">✅</div>
+      <h4>Zpráva odeslána!</h4>
+      <p>Ozvu se vám zpravidla do 24 hodin.</p>
     </div>
-    <div class="field"><label>Zpráva</label><textarea placeholder="Stručně popište váš e-shop a co potřebujete řešit…"></textarea></div>
-    <button class="btn-submit" onclick="alert('Zpráva odeslána! Ozvu se vám do 24 hodin.')">Odeslat zprávu →</button>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Lukáš <span>Pilko</span></div>
-  <p>© 2024 · Správa e-shopů &amp; tvorba webů · Nymburk</p>
+  <p>© 2026 · Správa e-shopů &amp; tvorba webů · Nymburk</p>
   <div class="footer-links">
     <a href="#">GDPR</a>
     <a href="#kontakt">Kontakt</a>
@@ -868,8 +866,8 @@
   </div>
 </footer>
 
-
 <script>
+  // Reveal animace
   const io = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -881,9 +879,42 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  // Nav scroll efekt
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.style.padding = scrollY > 60 ? '.7rem 4rem' : '1rem 4rem';
+  });
+
+  // Formspree AJAX submit
+  const form = document.getElementById('contact-form');
+  const btnSubmit = document.getElementById('btn-submit');
+  const formSuccess = document.getElementById('form-success');
+  const formError = document.getElementById('form-error');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formError.style.display = 'none';
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Odesílám…';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        document.getElementById('form-fields').style.display = 'none';
+        formSuccess.style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      formError.style.display = 'block';
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Odeslat zprávu →';
+    }
   });
 </script>
 </body>
