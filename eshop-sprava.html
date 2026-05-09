@@ -63,7 +63,7 @@
       transition: padding .3s;
     }
     .nav-logo-img {
-      height: 80px; width: auto; display: block;
+      height: 56px; width: auto; display: block;
       transition: height .3s;
     }
     nav ul { list-style: none; display: flex; gap: 2rem; }
@@ -408,7 +408,7 @@
       nav { padding: 0 2rem; }
       nav ul { display: none; }
       .hamburger { display: flex; }
-      .nav-logo-img { height: 68px; }
+      .nav-logo-img { height: 48px; }
       .nav-cta { display: none; }
       section { padding: 4rem 2rem; }
       #hero { grid-template-columns: 1fr; min-height: auto; }
@@ -817,7 +817,7 @@
   window.addEventListener('scroll', () => {
     const scrolled = scrollY > 60;
     const navLogo = nav.querySelector('.nav-logo-img');
-    if (navLogo) navLogo.style.height = scrolled ? '60px' : '80px';
+    if (navLogo) navLogo.style.height = scrolled ? '42px' : '56px';
   });
 
   // Hamburger menu
