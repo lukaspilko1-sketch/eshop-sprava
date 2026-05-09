@@ -63,7 +63,7 @@
       transition: padding .3s;
     }
     .nav-logo-img {
-      height: 72px; width: auto; display: block;
+      height: 108px; width: auto; display: block;
       padding: .5rem 0;
       transition: height .3s, padding .3s;
     }
@@ -465,7 +465,7 @@
     }
     @media (max-width: 1024px) {
       nav { padding: 0 2rem; } nav ul { display: none; }
-      .nav-logo-img { height: 52px; }
+      .nav-logo-img { height: 78px; }
       section { padding: 4rem 2rem; }
       #hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 3rem 2rem 2rem; }
@@ -778,7 +778,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:48px;width:auto;display:block;opacity:0.75;">
+  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:72px;width:auto;display:block;opacity:0.75;">
   <p>© 2026 · Tvorba webů · Nymburk</p>
   <div class="footer-links">
     <a href="#">GDPR</a>
@@ -807,7 +807,7 @@
     nav.style.padding = scrolled ? '0 4rem' : '0 4rem';
     const navLogo = nav.querySelector('.nav-logo-img');
     if (navLogo) {
-      navLogo.style.height = scrolled ? '52px' : '72px';
+      navLogo.style.height = scrolled ? '78px' : '108px';
       navLogo.style.padding = scrolled ? '.3rem 0' : '.5rem 0';
     }
   });
