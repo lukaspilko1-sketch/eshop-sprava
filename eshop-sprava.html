@@ -57,10 +57,15 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 900;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 4rem;
+      padding: 0 4rem;
       background: rgba(33,33,33,.96); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,.1);
       transition: padding .3s;
+    }
+    .nav-logo-img {
+      height: 72px; width: auto; display: block;
+      padding: .5rem 0;
+      transition: height .3s, padding .3s;
     }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav a { text-decoration: none; color: rgba(255,255,255,.5); font-size: .83rem; font-weight: 400; transition: color .2s; }
@@ -371,7 +376,8 @@
       .ref-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 1024px) {
-      nav { padding: 1rem 2rem; } nav ul { display: none; }
+      nav { padding: 0 2rem; } nav ul { display: none; }
+      .nav-logo-img { height: 52px; }
       section { padding: 4rem 2rem; }
       #hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 3rem 2rem 2rem; }
@@ -397,7 +403,7 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:48px;width:auto;display:block;">
+  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" class="nav-logo-img">
   <ul>
     <li><a href="#o-mne">O mně</a></li>
     <li><a href="#bsshop">BSShop</a></li>
@@ -739,7 +745,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:32px;width:auto;display:block;opacity:0.7;">
+  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:48px;width:auto;display:block;opacity:0.75;">
   <p>© 2026 · <a href="https://eshop-sprava.cz" style="color:inherit;text-decoration:none">eshop-sprava.cz</a> · Správa BSShop e-shopů · Nymburk</p>
   <div class="footer-links">
     <a href="#">GDPR</a>
@@ -764,9 +770,12 @@
   // Nav scroll efekt
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
-    nav.style.padding = scrollY > 60 ? '.7rem 4rem' : '1rem 4rem';
-    const navLogo = nav.querySelector('img');
-    if (navLogo) navLogo.style.height = scrollY > 60 ? '38px' : '48px';
+    const scrolled = scrollY > 60;
+    const navLogo = nav.querySelector('.nav-logo-img');
+    if (navLogo) {
+      navLogo.style.height = scrolled ? '52px' : '72px';
+      navLogo.style.padding = scrolled ? '.3rem 0' : '.5rem 0';
+    }
   });
 
   // Formspree AJAX submit
