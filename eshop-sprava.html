@@ -57,13 +57,13 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 900;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 4rem;
+      padding: .75rem 4rem;
       background: rgba(33,33,33,.96); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,.1);
       transition: padding .3s;
     }
     .nav-logo-img {
-      height: 80px; width: auto; display: block;
+      height: 56px; width: auto; display: block;
       transition: height .3s;
     }
     nav ul { list-style: none; display: flex; gap: 2rem; }
@@ -393,7 +393,7 @@
     .form-error-msg { display: none; background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.3); border-radius: 7px; padding: .7rem 1rem; font-size: .85rem; color: #fca5a5; margin-top: .5rem; }
 
     /* FOOTER */
-    footer { background: #181818; padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,.09); }
+    footer { background: #181818; padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,.09); }
     footer p { font-size: .75rem; color: rgba(255,255,255,.25); }
     .footer-links { display: flex; gap: 1.4rem; }
     .footer-links a { font-size: .75rem; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
@@ -405,10 +405,10 @@
       .ref-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 1024px) {
-      nav { padding: 0 2rem; }
+      nav { padding: .75rem 2rem; }
       nav ul { display: none; }
       .hamburger { display: flex; }
-      .nav-logo-img { height: 68px; }
+      .nav-logo-img { height: 48px; }
       .nav-cta { display: none; }
       section { padding: 4rem 2rem; }
       #hero { grid-template-columns: 1fr; min-height: auto; }
@@ -418,7 +418,7 @@
       .about-grid, .bsshop-grid, #kontakt { grid-template-columns: 1fr; gap: 2.5rem; }
       .steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; } .steps::before { display: none; }
       .usp-bar { padding: .9rem 2rem; gap: 1.5rem; }
-      footer { padding: 1.5rem 2rem; flex-direction: column; text-align: center; }
+      footer { padding: 2.5rem 2rem; flex-direction: column; text-align: center; }
       .contact-form { padding: 1.8rem; }
       .about-grid-stats { grid-template-columns: repeat(3, 1fr); }
       .crosslink-block { padding: 3rem 2rem; }
@@ -435,7 +435,7 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <img src="img/logo/logo-dark-icon.png" alt="Lukáš Pilko" class="nav-logo-img">
+  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" class="nav-logo-img">
   <ul>
     <li><a href="#o-mne">O mně</a></li>
     <li><a href="#bsshop">BSShop</a></li>
@@ -790,7 +790,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:56px;width:auto;display:block;opacity:0.75;">
+  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:44px;width:auto;display:block;opacity:0.75;">
   <p>© 2026 · <a href="https://eshop-sprava.cz" style="color:inherit;text-decoration:none">eshop-sprava.cz</a> · Správa BSShop e-shopů · Nymburk</p>
   <div class="footer-links">
     <a href="#">GDPR</a>
@@ -817,7 +817,7 @@
   window.addEventListener('scroll', () => {
     const scrolled = scrollY > 60;
     const navLogo = nav.querySelector('.nav-logo-img');
-    if (navLogo) navLogo.style.height = scrolled ? '60px' : '80px';
+    if (navLogo) navLogo.style.height = scrolled ? '42px' : '56px';
   });
 
   // Hamburger menu
