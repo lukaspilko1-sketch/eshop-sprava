@@ -2,10 +2,18 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#f8f9fa"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <title>Lukáš Pilko – Weby pro živnostníky a firmy | Tvorba webů</title>
   <meta name="description" content="Tvorba moderních webů pro živnostníky, malé firmy a spolky. Web do 5 dní, texty a fotky zařídím sám. Nymburk / remote po celé ČR."/>
+  <meta property="og:title" content="Lukáš Pilko – Tvorba webů pro živnostníky a firmy">
+  <meta property="og:description" content="Moderní weby do 5 dní. Texty a fotky zařídím sám. Nymburk / remote po celé ČR.">
+  <meta property="og:url" content="https://weby-hned.cz">
+  <meta property="og:type" content="website">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -35,11 +43,11 @@
     .tag {
       display: inline-flex; align-items: center; gap: .35rem;
       font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--orange); background: #fff7ed; border: 1px solid #fed7aa;
+      color: var(--amber); background: #fffbeb; border: 1px solid #fde68a;
       padding: .28rem .75rem; border-radius: 999px;
     }
     h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.9rem, 3.8vw, 2.9rem); font-weight: 800; line-height: 1.1; color: var(--ink); }
-    h2 em { font-style: normal; color: var(--orange); }
+    h2 em { font-style: normal; color: var(--amber); }
     .lead { font-size: 1.05rem; color: var(--muted); line-height: 1.82; margin-top: .85rem; max-width: 58ch; }
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -54,8 +62,6 @@
       border-bottom: 1px solid rgba(255,255,255,.1);
       transition: padding .3s;
     }
-    .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: -.01em; }
-    .nav-logo span { color: var(--orange-gl); }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav a { text-decoration: none; color: rgba(255,255,255,.5); font-size: .83rem; font-weight: 400; transition: color .2s; }
     nav a:hover { color: #fff; }
@@ -89,14 +95,15 @@
       padding: 4rem 4rem 4rem; position: relative; z-index: 2;
     }
     .hero-eyebrow { margin-bottom: 1.5rem; opacity:0; animation: fadeUp .5s .1s ease forwards; }
-    .hero-eyebrow .tag { background: rgba(234,88,12,.15); border-color: rgba(234,88,12,.3); color: var(--orange-gl); }
+    .hero-eyebrow .tag { background: rgba(217,119,6,.15); border-color: rgba(217,119,6,.3); color: var(--amber-gl); }
     h1 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 800; line-height: 1.05; color: #fff;
+      letter-spacing: -.02em;
       opacity:0; animation: fadeUp .5s .2s ease forwards;
     }
-    h1 em { font-style: normal; color: var(--orange-gl); }
+    h1 em { font-style: normal; color: var(--amber-gl); }
     .hero-sub {
       margin-top: 1.4rem; font-size: 1.1rem; color: rgba(255,255,255,.55);
       line-height: 1.8; max-width: 42ch;
@@ -121,18 +128,6 @@
       text-decoration: none; transition: border-color .2s, color .2s, background .2s; display: inline-block;
     }
     .btn-ghost:hover { border-color: var(--amber-lt); color: var(--amber-gl); }
-
-    .hero-badges {
-      display: flex; gap: 1rem; margin-top: 3rem; flex-wrap: wrap;
-      opacity:0; animation: fadeUp .5s .56s ease forwards;
-    }
-    .hbadge {
-      display: flex; align-items: center; gap: .55rem;
-      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22);
-      padding: .5rem .9rem; border-radius: 7px;
-      font-size: .8rem; color: rgba(255,255,255,.6); font-weight: 400;
-    }
-    .hbadge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber-lt); flex-shrink: 0; }
 
     .hero-right { position: relative; overflow: hidden; }
     .hero-right img { width: 100%; height: 100%; object-fit: cover; opacity: .35; display: block; }
@@ -184,14 +179,104 @@
       background-size: 40px 40px; pointer-events: none;
     }
     .weby-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 2; }
-    .weby-text .tag { background: rgba(234,88,12,.15); border-color: rgba(234,88,12,.3); color: var(--orange-gl); margin-bottom: .75rem; }
+    .weby-text .tag { background: rgba(217,119,6,.15); border-color: rgba(217,119,6,.3); color: var(--amber-gl); margin-bottom: .75rem; }
     .weby-text h2 { color: #fff; margin-bottom: 1.1rem; }
-    .weby-text h2 em { color: var(--orange-gl); }
+    .weby-text h2 em { color: var(--amber-gl); }
     .weby-text p { font-size: 1rem; color: rgba(255,255,255,.55); line-height: 1.85; margin-bottom: 1rem; }
     .weby-text p strong { color: rgba(255,255,255,.85); font-weight: 500; }
     .weby-features { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
     .weby-right { display: flex; flex-direction: column; }
     .weby-cta { margin-top: 1.5rem; }
+
+    /* BSF karty */
+    .bsf {
+      display: flex; gap: .9rem; align-items: flex-start;
+      padding: 1rem 1.2rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+      border-left: 3px solid var(--amber);
+      border-radius: var(--r); transition: background .2s, border-color .2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+    }
+    .bsf:hover { background: rgba(217,119,6,.12); border-color: rgba(217,119,6,.4); border-left-color: var(--amber-lt); }
+    .bsf-icon { color: var(--amber-lt); flex-shrink: 0; margin-top: .15rem; }
+    .bsf h4 { font-size: .9rem; font-weight: 600; color: #fff; margin-bottom: .25rem; }
+    .bsf p { font-size: .83rem; color: rgba(255,255,255,.55); line-height: 1.6; }
+    .bsshop-visual {
+      background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 16px; padding: 2rem;
+      display: flex; flex-direction: column; gap: .75rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 4px 24px rgba(0,0,0,.2);
+    }
+    .bsv-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .3rem; }
+    .bsv-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .7rem 1rem;
+      background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px; font-size: .88rem;
+      transition: background .15s;
+    }
+    .bsv-row:hover { background: rgba(255,255,255,.14); }
+    .bsv-row-left { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.82); font-weight: 400; }
+    .bsv-check {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(217,119,6,.3); border: 1.5px solid rgba(252,211,77,.5);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--amber-gl);
+    }
+
+    /* PORTFOLIO */
+    #portfolio { background: var(--white); border-top: 1px solid var(--line); }
+    .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .port-card {
+      background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 0; transition: border-color .2s, box-shadow .2s;
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .port-card:hover { border-color: var(--amber); box-shadow: 0 8px 24px rgba(217,119,6,.08); }
+    .port-img {
+      border-bottom: 1px solid var(--line); background: var(--bg2);
+      border-radius: calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0; overflow: hidden;
+    }
+    .port-img-bar {
+      background: #e2e6ea; padding: .45rem .7rem;
+      display: flex; gap: .32rem; align-items: center; border-bottom: 1px solid var(--line);
+    }
+    .port-img-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .port-img img { width: 100%; height: 162px; object-fit: cover; object-position: top center; display: block; }
+    .port-content { padding: 1.4rem 1.6rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+    .port-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .98rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+    .port-name a { color: inherit; text-decoration: none; transition: color .2s; }
+    .port-name a:hover { color: var(--amber); }
+    .port-badge { font-size: .72rem; font-weight: 500; color: var(--amber); background: #fffbeb; border: 1px solid #fde68a; padding: .2rem .65rem; border-radius: 999px; display: inline-block; margin-bottom: .9rem; }
+    .port-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
+    .port-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .port-tag { font-size: .72rem; font-weight: 500; color: var(--muted); background: var(--bg3); padding: .2rem .6rem; border-radius: 4px; }
+    .port-status { font-size: .75rem; color: var(--muted); margin-top: .9rem; display: flex; align-items: center; gap: .4rem; }
+    .port-status.done { color: #16a34a; font-weight: 500; }
+    .port-status.preview { color: var(--amber); font-weight: 500; }
+    .port-cta-link { display: inline-block; margin-top: auto; padding-top: .9rem; font-size: .82rem; color: var(--amber); text-decoration: none; font-weight: 500; transition: color .2s; }
+    .port-cta-link:hover { color: var(--amber-lt); }
+
+    /* CROSSLINK BLOK */
+    .crosslink-block {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 4rem;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .crosslink-block .tag { margin-bottom: .75rem; }
+    .crosslink-block h2 { margin-bottom: 1rem; }
+    .crosslink-block .lead { margin: 0 auto 1.8rem; }
+    .btn-primary-light {
+      background: var(--amber); color: #fff;
+      padding: .85rem 2rem; border-radius: 7px;
+      font-size: .9rem; font-weight: 600;
+      text-decoration: none; transition: background .2s, transform .15s; display: inline-block;
+      box-shadow: 0 4px 20px rgba(217,119,6,.3);
+    }
+    .btn-primary-light:hover { background: var(--amber-lt); transform: translateY(-2px); }
 
     /* O MNĚ */
     #o-mne { background: var(--white); }
@@ -218,12 +303,9 @@
     .about-grid-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
     .ast {
       background: var(--bg2); border-radius: var(--r); padding: 1.1rem 1.2rem;
-      border-top: 3px solid var(--orange);
+      border-top: 3px solid var(--amber);
     }
-    .ast:nth-child(2) { border-top-color: var(--amber); }
-    .ast:nth-child(3) { border-top-color: var(--orange-lt); }
-    .ast-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--orange); line-height: 1; }
-    .ast:nth-child(2) .ast-val { color: var(--amber); }
+    .ast-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--amber); line-height: 1; }
     .ast-lab { font-size: .72rem; color: var(--muted); font-weight: 500; margin-top: .3rem; text-transform: uppercase; letter-spacing: .07em; }
 
     /* BSSHOP */
@@ -239,100 +321,12 @@
       background-size: 40px 40px; pointer-events: none;
     }
     .bsshop-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 2; }
-    .bsshop-text .tag { background: rgba(234,88,12,.15); border-color: rgba(234,88,12,.3); color: var(--orange-gl); margin-bottom: .75rem; }
+    .bsshop-text .tag { background: rgba(217,119,6,.15); border-color: rgba(217,119,6,.3); color: var(--amber-gl); margin-bottom: .75rem; }
     .bsshop-text h2 { color: #fff; margin-bottom: 1.1rem; }
-    .bsshop-text h2 em { color: var(--orange-gl); }
+    .bsshop-text h2 em { color: var(--amber-gl); }
     .bsshop-text p { font-size: 1rem; color: rgba(255,255,255,.55); line-height: 1.85; margin-bottom: 1rem; }
     .bsshop-text p strong { color: rgba(255,255,255,.85); font-weight: 500; }
     .bsshop-features { margin-top: 2rem; display: flex; flex-direction: column; gap: .75rem; }
-    .bsf {
-      display: flex; gap: .9rem; align-items: flex-start;
-      padding: 1rem 1.2rem;
-      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
-      border-left: 3px solid var(--orange-lt);
-      border-radius: var(--r); transition: background .2s, border-color .2s;
-      box-shadow: 0 2px 12px rgba(0,0,0,.15);
-    }
-    .bsf:hover { background: rgba(217,119,6,.12); border-color: rgba(217,119,6,.4); border-left-color: var(--amber); }
-    .bsf-icon { color: var(--orange-gl); flex-shrink: 0; margin-top: .15rem; }
-    .bsf h4 { font-size: .9rem; font-weight: 600; color: #fff; margin-bottom: .25rem; }
-    .bsf p { font-size: .83rem; color: rgba(255,255,255,.55); line-height: 1.6; }
-    .bsshop-visual {
-      background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.18);
-      border-radius: 16px; padding: 2rem;
-      display: flex; flex-direction: column; gap: .75rem;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 4px 24px rgba(0,0,0,.2);
-    }
-    .bsv-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .78rem; font-weight: 700; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .3rem; }
-    .bsv-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .7rem 1rem;
-      background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.12);
-      border-radius: 8px; font-size: .88rem;
-      transition: background .15s;
-    }
-    .bsv-row:hover { background: rgba(255,255,255,.14); }
-    .bsv-row-left { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.82); font-weight: 400; }
-    .bsv-check {
-      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
-      background: rgba(234,88,12,.3); border: 1.5px solid rgba(253,186,116,.5);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--orange-gl);
-    }
-
-    /* PORTFOLIO */
-    #portfolio { background: var(--white); border-top: 1px solid var(--line); }
-    .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
-    .port-card {
-      background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
-      padding: 0; transition: border-color .2s, box-shadow .2s;
-      display: flex; flex-direction: column; overflow: hidden;
-    }
-    .port-card:hover { border-color: var(--amber); box-shadow: 0 8px 24px rgba(217,119,6,.08); }
-    .port-img {
-      border-bottom: 1px solid var(--line); background: var(--bg2);
-      border-radius: calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0; overflow: hidden;
-    }
-    .port-img-bar {
-      background: #e2e6ea; padding: .45rem .7rem;
-      display: flex; gap: .32rem; align-items: center; border-bottom: 1px solid var(--line);
-    }
-    .port-img-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .port-img img { width: 100%; height: 162px; object-fit: cover; object-position: top center; display: block; }
-    .port-content { padding: 1.4rem 1.6rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
-    .port-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .98rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
-    .port-name a { color: inherit; text-decoration: none; transition: color .2s; }
-    .port-name a:hover { color: var(--amber); }
-    .port-badge { font-size: .72rem; font-weight: 500; color: var(--orange); background: #fff7ed; border: 1px solid #fed7aa; padding: .2rem .65rem; border-radius: 999px; display: inline-block; margin-bottom: .9rem; }
-    .port-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
-    .port-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
-    .port-tag { font-size: .72rem; font-weight: 500; color: var(--muted); background: var(--bg3); padding: .2rem .6rem; border-radius: 4px; }
-    .port-status { font-size: .75rem; color: var(--muted); margin-top: .9rem; display: flex; align-items: center; gap: .4rem; }
-    .port-status.done { color: #16a34a; font-weight: 500; }
-    .port-status.preview { color: var(--amber); font-weight: 500; }
-    .port-cta-link { display: inline-block; margin-top: auto; padding-top: .9rem; font-size: .82rem; color: var(--orange); text-decoration: none; font-weight: 500; transition: color .2s; }
-    .port-cta-link:hover { color: var(--amber); }
-
-    /* CROSSLINK BLOK */
-    .crosslink-block {
-      background: var(--bg2);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 4rem;
-      text-align: center;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    .crosslink-block .tag { margin-bottom: .75rem; }
-    .crosslink-block h2 { margin-bottom: 1rem; }
-    .crosslink-block .lead { margin: 0 auto 1.8rem; }
-    .btn-primary-light {
-      background: var(--amber); color: #fff;
-      padding: .85rem 2rem; border-radius: 7px;
-      font-size: .9rem; font-weight: 600;
-      text-decoration: none; transition: background .2s, transform .15s; display: inline-block;
-      box-shadow: 0 4px 20px rgba(217,119,6,.3);
-    }
-    .btn-primary-light:hover { background: var(--amber-lt); transform: translateY(-2px); }
 
     /* SLUŽBY */
     #sluzby { background: var(--bg); }
@@ -343,20 +337,20 @@
       position: relative; overflow: hidden;
       transition: border-color .2s, transform .2s, box-shadow .2s;
     }
-    .svc-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(234,88,12,.1); }
+    .svc-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(217,119,6,.1); }
     .svc-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(to right, var(--amber), var(--amber-lt));
       transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
     }
     .svc-card:hover::before { transform: scaleX(1); }
-    .svc-icon { color: var(--orange); margin-bottom: 1.1rem; }
+    .svc-icon { color: var(--amber); margin-bottom: 1.1rem; }
     .svc-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: .55rem; }
     .svc-card p { font-size: .87rem; color: var(--muted); line-height: 1.78; }
     .svc-card ul { margin-top: .6rem; list-style: none; }
     .svc-card ul li { font-size: .83rem; color: var(--muted); line-height: 2; display: flex; align-items: baseline; gap: .5rem; }
     .svc-card ul li::before { content: '→'; color: var(--amber); font-size: .75rem; flex-shrink: 0; }
-    .svc-n { position: absolute; top: 1.2rem; right: 1.4rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3rem; font-weight: 800; color: rgba(234,88,12,.06); line-height: 1; }
+    .svc-n { position: absolute; top: 1.2rem; right: 1.4rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3rem; font-weight: 800; color: rgba(217,119,6,.06); line-height: 1; }
 
     /* REFERENCE */
     #reference { background: var(--white); border-top: 1px solid var(--line); }
@@ -369,12 +363,12 @@
     .ref-domain { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
     .ref-domain a { color: inherit; text-decoration: none; transition: color .2s; }
     .ref-domain a:hover { color: var(--amber); }
-    .ref-segment { font-size: .72rem; font-weight: 500; color: var(--orange); background: #fff7ed; border: 1px solid #fed7aa; padding: .2rem .65rem; border-radius: 999px; display: inline-block; margin-bottom: .9rem; }
+    .ref-segment { font-size: .72rem; font-weight: 500; color: var(--amber); background: #fffbeb; border: 1px solid #fde68a; padding: .2rem .65rem; border-radius: 999px; display: inline-block; margin-bottom: .9rem; }
     .ref-desc { font-size: .87rem; color: var(--muted); line-height: 1.75; }
     .ref-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
     .ref-tag { font-size: .72rem; font-weight: 500; color: var(--muted); background: var(--bg3); padding: .2rem .6rem; border-radius: 4px; }
     .ref-duration { font-size: .75rem; color: var(--muted); margin-top: .9rem; display: flex; align-items: center; gap: .4rem; }
-    .ref-duration svg { color: var(--orange); flex-shrink: 0; }
+    .ref-duration svg { color: var(--amber); flex-shrink: 0; }
 
     /* PROCESS */
     #postup, #postup-weby { background: var(--bg2); border-top: 1px solid var(--line); }
@@ -387,14 +381,10 @@
     .step { padding: 1.5rem; text-align: center; }
     .step-circle {
       width: 36px; height: 36px; border-radius: 50%;
-      background: var(--orange); color: #fff;
+      background: var(--amber); color: #fff;
       display: flex; align-items: center; justify-content: center;
       font-family: 'Plus Jakarta Sans', sans-serif; font-size: .85rem; font-weight: 800;
       margin: 0 auto 1.4rem; position: relative; z-index: 2;
-      box-shadow: 0 0 0 5px var(--bg2), 0 0 0 6px rgba(234,88,12,.2);
-    }
-    .step:nth-child(even) .step-circle {
-      background: var(--amber);
       box-shadow: 0 0 0 5px var(--bg2), 0 0 0 6px rgba(217,119,6,.2);
     }
     .step h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
@@ -449,9 +439,7 @@
     .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
 
     /* Form stavy */
-    .form-success {
-      display: none; text-align: center; padding: 2rem 1rem;
-    }
+    .form-success { display: none; text-align: center; padding: 2rem 1rem; }
     .form-success .fs-icon { font-size: 2.5rem; margin-bottom: .75rem; }
     .form-success h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: .4rem; }
     .form-success p { font-size: .9rem; color: rgba(255,255,255,.5); }
@@ -490,7 +478,6 @@
     @media (max-width: 640px) {
       .services-grid, .ref-grid, .steps, .port-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      .hero-badges { gap: .5rem; }
       .about-grid-stats { grid-template-columns: 1fr 1fr; }
       .crosslink-block { padding: 2.5rem 1.5rem; }
     }
@@ -500,7 +487,7 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">Lukáš <span>Pilko</span></div>
+  <img src="img/logo-dark.png" alt="Lukáš Pilko" style="height:36px;width:auto;display:block;">
   <ul>
     <li><a href="#weby">Weby</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
@@ -521,12 +508,6 @@
     <div class="hero-cta">
       <a href="#kontakt" class="btn-primary">Nezávazně napsat</a>
       <a href="#weby" class="btn-ghost">Jak to funguje →</a>
-    </div>
-    <div class="hero-badges">
-      <div class="hbadge"><div class="hbadge-dot"></div> Weby do 5 dnů</div>
-      <div class="hbadge"><div class="hbadge-dot"></div> Texty zařídím sám</div>
-      <div class="hbadge"><div class="hbadge-dot"></div> Pracuji sám – přímá komunikace</div>
-      <div class="hbadge"><div class="hbadge-dot"></div> Nymburk / remote</div>
     </div>
   </div>
   <div class="hero-right">
@@ -591,7 +572,7 @@
     <div class="weby-right reveal">
       <div class="bsshop-visual">
         <div class="bsv-title">Co je v ceně</div>
-        <div class="bsv-row"><div class="bsv-row-left">Telefonát zdarma – zjistím, co potřebuješ</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="bsv-row"><div class="bsv-row-left">Telefonát zdarma – zjistím, co potřebujete</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
         <div class="bsv-row"><div class="bsv-row-left">Texty zpracuji z našeho hovoru</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
         <div class="bsv-row"><div class="bsv-row-left">Fotky z Facebooku nebo Instagramu</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
         <div class="bsv-row"><div class="bsv-row-left">Responzivní design – mobil i desktop</div><div class="bsv-check"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
@@ -613,6 +594,28 @@
     <p class="lead">Ukázka projektů z mé tvorby. Každý web je připraven na míru – od telefonátu až po spuštění.</p>
   </div>
   <div class="port-grid reveal">
+    <div class="port-card">
+      <div class="port-img">
+        <div class="port-img-bar">
+          <div class="port-img-dot" style="background:#f87171"></div>
+          <div class="port-img-dot" style="background:#fbbf24"></div>
+          <div class="port-img-dot" style="background:#4ade80"></div>
+        </div>
+        <img src="img/portfolio/fotbal-preview.jpg" alt="Náhled webu SK Vrbová Lhota">
+      </div>
+      <div class="port-content">
+        <div class="port-name"><a href="https://vrbovka98.cz" target="_blank">SK Vrbová Lhota z.s. | Fotbalový klub</a></div>
+        <span class="port-badge">Spolek / fotbalový klub</span>
+        <p class="port-desc">Web pro místní fotbalový klub z Nymburska. Aktuality, galerie, přehled oddílů a informace o nejbližších zápasech.</p>
+        <div class="port-tags">
+          <span class="port-tag">Klub / spolek</span>
+          <span class="port-tag">Aktuality</span>
+          <span class="port-tag">Galerie</span>
+          <span class="port-tag">Nymbursko</span>
+        </div>
+        <div class="port-status done">✓ Dokončeno a spuštěno</div>
+      </div>
+    </div>
     <div class="port-card">
       <div class="port-img">
         <div class="port-img-bar">
@@ -642,41 +645,18 @@
           <div class="port-img-dot" style="background:#fbbf24"></div>
           <div class="port-img-dot" style="background:#4ade80"></div>
         </div>
-        <img src="img/portfolio/langr-preview.jpg" alt="Náhled webu Langr – Instalatér">
+        <img src="img/portfolio/exo-eko-preview.jpg" alt="Náhled webu Exo-Eko výdejní místo" onerror="this.style.background='var(--bg3)';this.style.height='162px';this.removeAttribute('onerror')">
       </div>
       <div class="port-content">
-        <div class="port-name"><a href="https://lukaspilko1-sketch.github.io/instal-langr/" target="_blank">Lukáš Langr | Instalatér &amp; topenář</a></div>
-        <span class="port-badge">Živnostník / instalatér</span>
-        <p class="port-desc">Web pro instalatéra a topenáře. Moderní jednostránkový web s ukázkami práce, přehledem služeb a kontaktním formulářem.</p>
+        <div class="port-name"><a href="https://www.exo-eko.cz/vydejni-misto-nymburk/" target="_blank">Exo-Eko | Výdejní místo Nymburk</a></div>
+        <span class="port-badge">Landing page / výdejní místo</span>
+        <p class="port-desc">Landing page pro výdejní místo dopravců Exo-Eko v Nymburku. Přehled dostupných dopravců, otevírací doba a kontakt.</p>
         <div class="port-tags">
           <span class="port-tag">Landing page</span>
-          <span class="port-tag">Responzivní design</span>
-          <span class="port-tag">Galerie prací</span>
-          <span class="port-tag">SEO</span>
+          <span class="port-tag">Výdejní místo</span>
+          <span class="port-tag">Nymburk</span>
         </div>
-        <div class="port-status preview">⧗ Preview verze</div>
-      </div>
-    </div>
-    <div class="port-card">
-      <div class="port-img">
-        <div class="port-img-bar">
-          <div class="port-img-dot" style="background:#f87171"></div>
-          <div class="port-img-dot" style="background:#fbbf24"></div>
-          <div class="port-img-dot" style="background:#4ade80"></div>
-        </div>
-        <img src="img/portfolio/fotbal-preview.jpg" alt="Náhled webu SK Vrbová Lhota">
-      </div>
-      <div class="port-content">
-        <div class="port-name"><a href="https://lukaspilko1-sketch.github.io/sk-vrbova-lhota/" target="_blank">SK Vrbová Lhota z.s. | Fotbalový klub</a></div>
-        <span class="port-badge">Spolek / fotbalový klub</span>
-        <p class="port-desc">Web pro místní fotbalový klub z Nymburska. Aktuality, galerie, přehled oddílů a informace o nejbližších zápasech.</p>
-        <div class="port-tags">
-          <span class="port-tag">Klub / spolek</span>
-          <span class="port-tag">Aktuality</span>
-          <span class="port-tag">Galerie</span>
-          <span class="port-tag">Nymbursko</span>
-        </div>
-        <div class="port-status preview">⧗ Preview verze</div>
+        <div class="port-status done">✓ Dokončeno a spuštěno</div>
       </div>
     </div>
   </div>
@@ -713,11 +693,11 @@
   </div>
 </section>
 
-<!-- CROSSLINK – BSShop e-shopy -->
+<!-- CROSSLINK – e-shopy -->
 <div class="crosslink-block reveal">
   <span class="tag">Také se starám o…</span>
-  <h2>Spravuji také <em>BSShop e-shopy</em></h2>
-  <p class="lead">Dlouhodobá správa e-shopů na platformě BSShop — produkty, SEO, Pohoda, Ecomail. Vše bez nutnosti vašeho neustálého dohledu.</p>
+  <h2>Spravuji také <em>e-shopy</em></h2>
+  <p class="lead">Dlouhodobá správa e-shopů na platformě BSShop — produkty, SEO, Pohoda, Ecomail. Vše bez toho, abyste museli kontrolovat každý krok.</p>
   <a href="https://eshop-sprava.cz" target="_blank" class="btn-primary-light">Zjistit více na eshop-sprava.cz →</a>
 </div>
 
@@ -751,7 +731,7 @@
       <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
         <!-- honeypot spam ochrana -->
         <input type="text" name="_gotcha" style="display:none">
-        <input type="hidden" name="_subject" value="Nová zpráva z webu – lukas-pilko.cz">
+        <input type="hidden" name="_subject" value="Nová zpráva z webu – weby-hned.cz">
 
         <div class="form-row">
           <div class="field">
@@ -768,11 +748,11 @@
           <input type="email" id="email" name="email" placeholder="vas@email.cz" required>
         </div>
         <div class="field">
-          <label for="sluzba">Typ spolupráce</label>
+          <label for="sluzba">Zajímá mě</label>
           <select id="sluzba" name="sluzba">
             <option value="">Vyberte…</option>
-            <option>Tvorba webu pro živnostníka</option>
-            <option>Tvorba webu pro firmu</option>
+            <option>Správa e-shopu</option>
+            <option>Tvorba webu</option>
             <option>Jiné</option>
           </select>
         </div>
