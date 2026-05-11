@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zásady zpracování osobních údajů – Lukáš Pilko | weby-hned.cz</title>
+  <meta name="description" content="Informace o zpracování osobních údajů dle GDPR. Správce: Lukáš Pilko, IČ: 70734313."/>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:    #212121; --ink2: #2d2d2d;
+      --amber:  #d97706; --amber-lt: #f59e0b; --amber-gl: #fcd34d;
+      --bg:     #f8f9fa; --bg2: #f1f3f5; --bg3: #e2e6ea;
+      --line:   #ced4da; --muted: #64748b; --white: #ffffff;
+      --r:      10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.8; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 4rem;
+      background: rgba(33,33,33,.96); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .nav-logo-img { height: 56px; width: auto; display: block; }
+    .nav-back {
+      color: rgba(255,255,255,.6); text-decoration: none; font-size: .83rem;
+      display: flex; align-items: center; gap: .4rem; transition: color .2s;
+    }
+    .nav-back:hover { color: var(--amber-gl); }
+
+    /* HERO */
+    .page-hero {
+      background: var(--ink2); padding: 7rem 4rem 3.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .page-hero .tag {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--amber-gl); background: rgba(217,119,6,.15); border: 1px solid rgba(217,119,6,.3);
+      padding: .28rem .75rem; border-radius: 999px; margin-bottom: 1rem;
+    }
+    .page-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: #fff; line-height: 1.1;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--amber-gl); }
+    .page-hero p { margin-top: .75rem; color: rgba(255,255,255,.45); font-size: .95rem; max-width: 60ch; }
+    .page-hero .meta { margin-top: 1.5rem; display: flex; gap: 2rem; flex-wrap: wrap; }
+    .page-hero .meta-item { font-size: .78rem; color: rgba(255,255,255,.35); }
+    .page-hero .meta-item strong { color: rgba(255,255,255,.6); font-weight: 500; }
+
+    /* LAYOUT */
+    .content-wrap {
+      max-width: 860px; margin: 0 auto;
+      padding: 3.5rem 4rem 5rem;
+    }
+
+    /* SECTIONS */
+    .gdpr-section { margin-bottom: 3rem; }
+    .gdpr-section h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem; font-weight: 700; color: var(--ink);
+      margin-bottom: 1rem; padding-bottom: .5rem;
+      border-bottom: 2px solid var(--amber);
+      display: inline-block;
+    }
+    .gdpr-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .95rem; font-weight: 600; color: var(--ink);
+      margin: 1.4rem 0 .4rem;
+    }
+    .gdpr-section p { font-size: .95rem; color: var(--muted); margin-bottom: .75rem; }
+    .gdpr-section p strong { color: var(--ink); font-weight: 500; }
+    .gdpr-section ul { list-style: none; margin: .5rem 0 1rem; }
+    .gdpr-section ul li {
+      font-size: .93rem; color: var(--muted); line-height: 1.75;
+      padding-left: 1.3rem; position: relative;
+    }
+    .gdpr-section ul li::before {
+      content: '→'; color: var(--amber); font-size: .78rem;
+      position: absolute; left: 0; top: .12rem;
+    }
+
+    /* INFO BOX */
+    .info-box {
+      background: var(--bg2); border: 1px solid var(--line);
+      border-left: 3px solid var(--amber);
+      border-radius: var(--r); padding: 1.2rem 1.4rem;
+      margin: 1.2rem 0;
+    }
+    .info-box p { font-size: .9rem; color: var(--muted); margin: 0; }
+    .info-box p + p { margin-top: .4rem; }
+    .info-box strong { color: var(--ink); font-weight: 500; }
+
+    /* SPRÁVCE KARTA */
+    .controller-card {
+      background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--amber);
+      border-radius: var(--r); padding: 1.6rem 1.8rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem;
+      margin: 1.2rem 0;
+    }
+    .cc-item .cc-label { font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .2rem; }
+    .cc-item .cc-val { font-size: .95rem; color: var(--ink); font-weight: 400; }
+    .cc-item .cc-val a { color: var(--amber); text-decoration: none; }
+    .cc-item .cc-val a:hover { color: var(--amber-lt); }
+
+    /* PRÁVA TABULKA */
+    .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 1rem 0; }
+    .right-item {
+      background: var(--bg2); border: 1px solid var(--line); border-radius: 8px;
+      padding: .9rem 1.1rem;
+    }
+    .right-item h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .85rem; font-weight: 700; color: var(--ink); margin-bottom: .25rem; }
+    .right-item p { font-size: .82rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      background: #181818; padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+    footer p { font-size: .75rem; color: rgba(255,255,255,.25); }
+    .footer-links { display: flex; gap: 1.4rem; }
+    .footer-links a { font-size: .75rem; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--amber-gl); }
+
+    @media (max-width: 768px) {
+      nav { padding: .75rem 1.5rem; }
+      .page-hero { padding: 6rem 1.5rem 2.5rem; }
+      .content-wrap { padding: 2.5rem 1.5rem 4rem; }
+      .controller-card { grid-template-columns: 1fr; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .page-hero .meta { gap: 1rem; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" class="nav-logo-img">
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Zpět na weby-hned.cz
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <span class="tag">⚖ Právní dokumenty</span>
+  <h1>Zásady zpracování<br><em>osobních údajů</em></h1>
+  <p>Informace o tom, jaké osobní údaje zpracovávám, za jakým účelem a jaká máte práva dle nařízení GDPR.</p>
+  <div class="meta">
+    <div class="meta-item"><strong>Platné od:</strong> 1. 6. 2025</div>
+    <div class="meta-item"><strong>Poslední aktualizace:</strong> 1. 6. 2025</div>
+    <div class="meta-item"><strong>Správce:</strong> Lukáš Pilko, IČ 70734313</div>
+  </div>
+</div>
+
+<!-- OBSAH -->
+<div class="content-wrap">
+
+  <!-- 1. SPRÁVCE -->
+  <div class="gdpr-section">
+    <h2>1. Správce osobních údajů</h2>
+    <p>Správcem osobních údajů ve smyslu čl. 4 odst. 7 nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR) je:</p>
+    <div class="controller-card">
+      <div class="cc-item">
+        <div class="cc-label">Jméno a příjmení</div>
+        <div class="cc-val">Lukáš Pilko</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-label">IČ</div>
+        <div class="cc-val">70734313</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-label">Místo podnikání</div>
+        <div class="cc-val">Eliščina třída 146/6, 288 02 Nymburk</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-label">Kraj</div>
+        <div class="cc-val">Středočeský kraj</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-label">E-mail</div>
+        <div class="cc-val"><a href="mailto:lukas@weby-hned.cz">lukas@weby-hned.cz</a></div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-label">Telefon</div>
+        <div class="cc-val"><a href="tel:+420731085499">+420 731 085 499</a></div>
+      </div>
+    </div>
+    <p>Nejsem plátce DPH. Nemám jmenovaného pověřence pro ochranu osobních údajů (DPO), neboť mi tato povinnost ze zákona nevyplývá.</p>
+  </div>
+
+  <!-- 2. JAKÉ ÚDAJE -->
+  <div class="gdpr-section">
+    <h2>2. Jaké osobní údaje zpracovávám</h2>
+    <p>Zpracovávám výhradně údaje, které mi sdělíte dobrovolně prostřednictvím kontaktního formuláře na webu:</p>
+    <ul>
+      <li><strong>Jméno a příjmení</strong> – pro oslovení a identifikaci</li>
+      <li><strong>E-mailová adresa</strong> – pro odpověď na vaši poptávku (povinný údaj)</li>
+      <li><strong>Telefonní číslo</strong> – pro případný telefonický kontakt (nepovinný údaj)</li>
+      <li><strong>Obsah zprávy</strong> – popis poptávky nebo dotazu</li>
+      <li><strong>Zájem o službu</strong> – výběr z nabídky (nepovinný údaj)</li>
+    </ul>
+    <div class="info-box">
+      <p><strong>Cookies a sledovací nástroje:</strong> Tento web nepoužívá Google Analytics, Hotjar ani jiné sledovací nebo analytické nástroje. Nepracuji s reklamními cookies třetích stran.</p>
+    </div>
+  </div>
+
+  <!-- 3. ÚČEL -->
+  <div class="gdpr-section">
+    <h2>3. Účel a právní základ zpracování</h2>
+
+    <h3>Zpracování poptávky (kontaktní formulář)</h3>
+    <p>
+      <strong>Účel:</strong> Vyřízení vašeho dotazu nebo poptávky, navázání obchodního vztahu.<br>
+      <strong>Právní základ:</strong> Čl. 6 odst. 1 písm. b) GDPR – zpracování nezbytné pro provedení opatření přijatých před uzavřením smlouvy na vaši žádost.<br>
+      <strong>Doba uchování:</strong> Po dobu nezbytnou k vyřízení poptávky, nejdéle 2 roky od posledního kontaktu, pokud mezi námi nevznikne smluvní vztah.
+    </p>
+
+    <h3>Plnění smlouvy (pokud dojde ke spolupráci)</h3>
+    <p>
+      <strong>Účel:</strong> Realizace domluvené služby, fakturace, komunikace v průběhu zakázky.<br>
+      <strong>Právní základ:</strong> Čl. 6 odst. 1 písm. b) GDPR – plnění smlouvy.<br>
+      <strong>Doba uchování:</strong> Po dobu trvání spolupráce a dále po dobu 10 let od vystavení poslední faktury (zákonná archivační povinnost účetních dokladů).
+    </p>
+
+    <h3>Oprávněný zájem</h3>
+    <p>
+      <strong>Účel:</strong> Ochrana mých právních nároků v případě sporu.<br>
+      <strong>Právní základ:</strong> Čl. 6 odst. 1 písm. f) GDPR – oprávněný zájem správce.
+    </p>
+  </div>
+
+  <!-- 4. PŘÍJEMCI -->
+  <div class="gdpr-section">
+    <h2>4. Příjemci osobních údajů</h2>
+    <p>Vaše osobní údaje neprodávám, nepronajímám ani nesdílím s třetími stranami pro jejich vlastní marketingové účely. Údaje předávám pouze těmto zpracovatelům, a to pouze v rozsahu nezbytném pro poskytnutí služby:</p>
+
+    <div class="info-box">
+      <p><strong>Formspree, Inc.</strong> (pouze web weby-hned.cz)<br>
+      Provozovatel systému pro zpracování formulářů. Sídlo: USA. Přenos dat do třetí země probíhá na základě standardních smluvních doložek (SCC) dle čl. 46 odst. 2 písm. c) GDPR.<br>
+      Zásady ochrany: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" style="color:var(--amber)">formspree.io/legal/privacy-policy</a></p>
+    </div>
+
+    <div class="info-box">
+      <p><strong>Microsoft Corporation</strong> (e-mailová komunikace)<br>
+      E-mailové služby (Outlook/Microsoft 365) pro příjem a odesílání zpráv. Sídlo: USA. Přenos probíhá na základě standardních smluvních doložek (SCC).<br>
+      Zásady ochrany: <a href="https://privacy.microsoft.com/cs-cz/privacystatement" target="_blank" style="color:var(--amber)">privacy.microsoft.com</a></p>
+    </div>
+
+    <p>Žádnému dalšímu zpracovateli ani třetí straně vaše údaje nepředávám.</p>
+  </div>
+
+  <!-- 5. PRÁVA -->
+  <div class="gdpr-section">
+    <h2>5. Vaše práva</h2>
+    <p>Dle GDPR máte následující práva, která můžete uplatnit zasláním e-mailu na <a href="mailto:lukas@weby-hned.cz" style="color:var(--amber)">lukas@weby-hned.cz</a>:</p>
+
+    <div class="rights-grid">
+      <div class="right-item">
+        <h4>Právo na přístup</h4>
+        <p>Máte právo vědět, zda zpracovávám vaše osobní údaje, a získat jejich kopii.</p>
+      </div>
+      <div class="right-item">
+        <h4>Právo na opravu</h4>
+        <p>Máte právo požadovat opravu nepřesných nebo neúplných osobních údajů.</p>
+      </div>
+      <div class="right-item">
+        <h4>Právo na výmaz</h4>
+        <p>Máte právo požadovat výmaz vašich údajů, pokud pominul účel jejich zpracování.</p>
+      </div>
+      <div class="right-item">
+        <h4>Právo na omezení</h4>
+        <p>Máte právo požadovat omezení zpracování, pokud zpochybňujete přesnost údajů.</p>
+      </div>
+      <div class="right-item">
+        <h4>Právo na přenositelnost</h4>
+        <p>Máte právo získat vaše údaje ve strukturovaném, strojově čitelném formátu.</p>
+      </div>
+      <div class="right-item">
+        <h4>Právo vznést námitku</h4>
+        <p>Máte právo vznést námitku proti zpracování na základě oprávněného zájmu.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:1rem">Na vaši žádost odpovím bez zbytečného odkladu, nejpozději do <strong>30 dnů</strong> od jejího doručení. Lhůtu mohu ve výjimečných případech prodloužit o dalších 60 dní, o čemž vás budu informovat.</p>
+
+    <div class="info-box">
+      <p><strong>Právo podat stížnost u dozorového úřadu:</strong> Pokud se domníváte, že zpracováváním vašich osobních údajů dochází k porušení GDPR, máte právo podat stížnost u Úřadu pro ochranu osobních údajů (UOOU), Pplk. Sochora 27, 170 00 Praha 7, <a href="https://www.uoou.cz" target="_blank" style="color:var(--amber)">www.uoou.cz</a>.</p>
+    </div>
+  </div>
+
+  <!-- 6. ZABEZPEČENÍ -->
+  <div class="gdpr-section">
+    <h2>6. Zabezpečení osobních údajů</h2>
+    <p>Přijal jsem technická a organizační opatření k ochraně vašich osobních údajů před neoprávněným přístupem, ztrátou nebo zneužitím. Komunikace přes kontaktní formulář je šifrována protokolem HTTPS. Přístup k osobním údajům mám pouze já jako správce.</p>
+  </div>
+
+  <!-- 7. AKTUALIZACE -->
+  <div class="gdpr-section">
+    <h2>7. Změny těchto zásad</h2>
+    <p>Tyto zásady mohu průběžně aktualizovat, zejména v případě změny právních předpisů nebo způsobu zpracování dat. Aktuální verze je vždy dostupná na této stránce s uvedením data poslední aktualizace.</p>
+    <p>Tato verze zásad je platná od <strong>1. 6. 2025</strong>.</p>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <img src="img/logo/logo-dark.png" alt="Lukáš Pilko" style="height:48px;width:auto;opacity:.6">
+  <p>© 2026 · Lukáš Pilko · IČ 70734313 · Nymburk</p>
+  <div class="footer-links">
+    <a href="gdpr.html">GDPR</a>
+    <a href="https://weby-hned.cz" target="_blank">weby-hned.cz</a>
+  </div>
+</footer>
+
+</body>
+</html>
