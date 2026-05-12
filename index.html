@@ -260,27 +260,13 @@
 
     /* PORTFOLIO */
     #portfolio { background: var(--white); border-top: 1px solid var(--line); }
-    .port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2.5rem; }
+    .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
     .port-card {
       background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
       padding: 0; transition: border-color .2s, box-shadow .2s;
       display: flex; flex-direction: column; overflow: hidden;
     }
-    .port-card:hover { border-color: var(--amber); box-shadow: 0 8px 24px rgba(217,119,6,.1); }
-    /* Featured — první karta přes oba sloupce, horizontální layout */
-    .port-card:first-child {
-      grid-column: 1 / -1; flex-direction: row;
-      border-left: 3px solid var(--amber);
-    }
-    .port-card:first-child .port-img {
-      width: 55%; flex-shrink: 0; border-bottom: none;
-      border-right: 1px solid var(--line);
-      border-radius: calc(var(--r) - 1px) 0 0 calc(var(--r) - 1px);
-    }
-    .port-card:first-child .port-img img { height: 100%; min-height: 290px; }
-    .port-card:first-child .port-content { padding: 2.2rem 2.4rem; justify-content: center; }
-    .port-card:first-child .port-name a { font-size: 1.15rem; }
-    .port-card:first-child .port-desc { font-size: .93rem; }
+    .port-card:hover { border-color: var(--amber); box-shadow: 0 8px 24px rgba(217,119,6,.08); }
     .port-img {
       border-bottom: 1px solid var(--line); background: var(--bg2);
       border-radius: calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0; overflow: hidden;
@@ -290,7 +276,7 @@
       display: flex; gap: .32rem; align-items: center; border-bottom: 1px solid var(--line);
     }
     .port-img-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .port-img img { width: 100%; height: 220px; object-fit: cover; object-position: top center; display: block; }
+    .port-img img { width: 100%; height: 370px; object-fit: cover; object-position: top center; display: block; }
     .port-content { padding: 1.4rem 1.6rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
     .port-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .98rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
     .port-name a { color: inherit; text-decoration: none; transition: color .2s; }
@@ -525,14 +511,10 @@
       .contact-form { padding: 1.8rem; }
       .about-grid-stats { grid-template-columns: repeat(3, 1fr); }
       .crosslink-block { padding: 3rem 2rem; }
-      /* Featured karta na tabletu — zpět na vertikální */
-      .port-card:first-child { flex-direction: column; border-left: 1px solid var(--line); border-top: 3px solid var(--amber); }
-      .port-card:first-child .port-img { width: 100%; border-right: none; border-bottom: 1px solid var(--line); border-radius: calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0; }
-      .port-card:first-child .port-img img { min-height: auto; height: 220px; }
-      .port-card:first-child .port-content { padding: 1.4rem 1.6rem 1.6rem; }
     }
     @media (max-width: 640px) {
       .services-grid, .ref-grid, .steps, .port-grid { grid-template-columns: 1fr; }
+      .port-img img { height: 260px; }
       .form-row { grid-template-columns: 1fr; }
       .about-grid-stats { grid-template-columns: 1fr 1fr; }
       .crosslink-block { padding: 2.5rem 1.5rem; }
